@@ -16,10 +16,10 @@ class Counter extends Component<CounterProps>{
                 <button onClick={() => {
                     console.log("...")
                     this.setState({num: num+1})
-                }}>1증가</button>
+                }}>+1</button>
                 <button onClick={() => {
                     this.setState({num: num-1})
-                }}>1감소</button>
+                }}>-1</button>
             </div>
         )
     }
