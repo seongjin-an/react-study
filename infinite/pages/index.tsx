@@ -29,7 +29,7 @@ const index = () => {
         fun().then(posts=>{
             setData(posts)
             setList(posts.slice(0, 10))
-            totalPage.current = posts.length
+            totalPage.current = posts.length/10
             console.log(posts.length)
             console.log("iii:", posts)
         })
