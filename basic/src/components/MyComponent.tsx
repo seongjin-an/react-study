@@ -12,6 +12,11 @@ const MyComponent = (props:{name:any}) => {
     const imsi: number[] = []
     const [imsi2, setImsi2] = useState<number[]>([])
     useEffect(()=>{
+        temp.forEach(num=>{
+            setValue(prevState => [...prevState, num])
+        })
+    },[])
+    useEffect(()=>{
         // temp.forEach(num => {
         //     setValue([...value, num])
         // })
@@ -25,7 +30,7 @@ const MyComponent = (props:{name:any}) => {
             setImsi2((a:number[])=>[...a, temp[i]])
         }
 
-    },[temp])
+    },[])
     return <ComponentMainStyle>
         HI.. {props.name}
         value
