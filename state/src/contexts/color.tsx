@@ -9,7 +9,7 @@ interface IActions{
 }
 // const ColorContext = createContext<IColor>({color: 'black'})
 
-
+//type 적용 나중에 해보자
 const ColorContext: React.Context<any> = createContext({
     state: {color: '', subcolor: ''},
     actions: {
