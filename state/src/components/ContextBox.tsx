@@ -1,7 +1,7 @@
-import ColorContext, {ColorConsumer} from "../contexts/color";
+import ColorContext, {ColorConsumer} from "../contexts/context";
 import {useContext} from "react";
 
-const ColorBox = () => {
+const ContextBox = () => {
     const {state} = useContext(ColorContext)
 
     return (
@@ -26,7 +26,7 @@ const ColorBox = () => {
     // )
 }
 
-export default ColorBox
+export default ContextBox
 /*
 const RenderPropsSample = ({children}) =>{
     return <div>{children(3)}</div>

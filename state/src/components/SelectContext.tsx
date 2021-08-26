@@ -1,8 +1,8 @@
 import React from 'react'
-import {ColorConsumer} from "../contexts/color";
+import {ColorConsumer} from "../contexts/context";
 const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet']
 
-const SelectColors = () => {
+const SelectContext = () => {
     return(
         <div>
             <ColorConsumer>
@@ -24,4 +24,4 @@ const SelectColors = () => {
         </div>
     )
 }
-export default SelectColors
+export default SelectContext

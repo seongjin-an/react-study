@@ -1,12 +1,12 @@
-import Ctx from "../contexts/ctx";
+import Basic from "../contexts/basic";
 
-const CtxBox = () =>{
+const BasicBox = () =>{
     return(
-        <Ctx.Consumer>
+        <Basic.Consumer>
             {value => (
                 <div style={{width: '100px', height: '100px', background: value.color}}/>
             )}
-        </Ctx.Consumer>
+        </Basic.Consumer>
     )
 }
-export default CtxBox
+export default BasicBox

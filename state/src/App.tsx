@@ -1,12 +1,12 @@
-import ColorBox from "./components/ColorBox";
-import ColorContext, {ColorProvider} from "./contexts/color";
-import SelectColors from "./components/SelectColors";
+import ContextBox from "./components/ContextBox";
+import ColorContext, {ColorProvider} from "./contexts/context";
+import SelectContext from "./components/SelectContext";
 const App = () => {
   return(
       <ColorProvider>
           <div>
-              <SelectColors/>
-              <ColorBox/>
+              <SelectContext/>
+              <ContextBox/>
           </div>
       </ColorProvider>
   )
