@@ -1,0 +1,9 @@
+.content{
+    height: 54vh;
+    width: 40vw;
+}
+.contentName{
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: 1vw;
+}

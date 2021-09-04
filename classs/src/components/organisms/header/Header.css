@@ -1,0 +1,7 @@
+.header-area{
+    display:flex;
+    flex-direction: column;
+    width: 40vw;
+    height: 16vh;
+    background-color: cornflowerblue;
+}

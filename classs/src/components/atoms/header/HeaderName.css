@@ -1,0 +1,8 @@
+.header-name{
+    width:5vw;
+    height: auto;
+    padding: 0 2vw;
+    font-weight: bold;
+    display:flex;
+    align-items:center;
+}

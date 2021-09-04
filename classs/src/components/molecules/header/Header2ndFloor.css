@@ -1,0 +1,6 @@
+.floor-2nd{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 8vh;
+}
