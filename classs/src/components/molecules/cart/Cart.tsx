@@ -16,8 +16,8 @@ class Cart extends Component<ICart, any>{
                             <td>수량</td>
                             <td>가격</td>
                         </tr>
-                        {items.filter(item => item.quantity !== 0).map(item => {
-                            return <tr>
+                        {items.filter(item => item.quantity !== 0).map((item, index) => {
+                            return <tr key={index}>
                                 <td>{item.desc}</td>
                                 <td>{item.quantity}</td>
                                 <td>{item.price}</td>

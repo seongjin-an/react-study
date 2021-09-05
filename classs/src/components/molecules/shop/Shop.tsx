@@ -18,8 +18,8 @@ class Shop extends Component<IShop, any>{
                         <td>가격</td>
                         <td>수량</td>
                     </tr>
-                    {items.map(item => {
-                        return <tr>
+                    {items.map((item,index) => {
+                        return <tr key={index}>
                                 <td>{item.desc}</td>
                                 <td>{moneyForm(item.price)}원</td>
                                 <td>
