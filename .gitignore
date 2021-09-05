@@ -3,7 +3,7 @@
 # dependencies
 /infinite/node-modules/
 /basic/node_modules/
-/myapp/node-modules/
+/myapp/node_modules/
 /.pnp
 .pnp.js
 
