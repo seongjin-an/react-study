@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/react.iml" filepath="$PROJECT_DIR$/.idea/react.iml" />
+      <module fileurl="file://$PROJECT_DIR$/reactSpring/reactSpring.iml" filepath="$PROJECT_DIR$/reactSpring/reactSpring.iml" />
     </modules>
   </component>
 </project>
