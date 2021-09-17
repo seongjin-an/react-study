@@ -1,4 +1,5 @@
 import {GET_INFO_FAIL, GET_INFO_REQUEST, GET_INFO_SUCCESS} from "./infoType";
+import {Actions} from "./infoAction";
 export interface IPerson{
     name:string
     age:string
@@ -23,7 +24,9 @@ const intialState = {
     error: false
 } as IInfo
 
-const info = (state = intialState, action: any) => {
+type RootAction = Actions[keyof Actions]
+
+const info = (state = intialState, action: RootAction) => {
     switch(action.type){
         case GET_INFO_REQUEST:
             console.log('reducer request:', action)

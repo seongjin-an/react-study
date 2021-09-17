@@ -2,11 +2,12 @@ import {ChangeEvent, Component} from "react";
 import Header from "../../organisms/header/Header";
 import Content from "../../organisms/content/Content";
 import './Business.css'
-import {getInfoFail, getInfoRequest, getInfoSuccess} from "../../../store/base/infoAction";
 import {connect} from "react-redux";
 import {IPost} from "../../../store/base/infoReducer";
 import {CombinedState, Dispatch} from "redux";
 import axios from "axios";
+import {IRootState, RootState} from "../../../store";
+import {infoActions} from "../../../store/base/infoAction";
 
 export enum ETab{
     shop='shop', cart='cart', ship='ship'
@@ -104,6 +105,7 @@ class Business extends Component<IBusinessProps, IState>{
     }
 
     render(){
+        console.log('typeof:',typeof this.props)
         const {posts, progress, error} = this.props;
         return(
             <div className="business-area">
@@ -130,20 +132,22 @@ class Business extends Component<IBusinessProps, IState>{
     }
 }
 
-const mapStateToProps = (state: CombinedState<any>) => ({
+const mapStateToProps = (state: IRootState) => ({
     posts: state.info.posts,
     progress: state.info.progress,
     error: state.info.error
 })
+
 const mapDispatchToProps = (dispatch:Dispatch) => ({
     getDataRequest: (req:boolean) => {
-        dispatch(getInfoRequest(req))
+
+        dispatch(infoActions.getInfoRequest(req))
     },
     getDataSuccess: (req: IPost) => {
-        dispatch(getInfoSuccess(req))
+        dispatch(infoActions.getInfoSuccess(req))
     },
     getDataFail: (req:boolean) => {
-        dispatch(getInfoFail(req))
+        dispatch(infoActions.getInfoFail(req))
     }
 })
 export default connect(
