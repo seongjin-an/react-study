@@ -1,8 +1,8 @@
-import ColorContext, {ColorConsumer} from "../contexts/context";
+import ColorContext, {ColorConsumer, IContext} from "../contexts/context";
 import {useContext} from "react";
 
 const ContextBox = () => {
-    const {state} = useContext(ColorContext)
+    const {state} = useContext<IContext>(ColorContext)
 
     return (
         <>
