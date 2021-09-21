@@ -1,5 +1,3 @@
-import Counter from "./components/Counter";
-import CounterContainer from "./components/CounterContainer";
 import Post from "./components/post/Post";
 
 const App = () => {

@@ -1,6 +1,5 @@
 import {createReducer} from "@reduxjs/toolkit";
 import {GET_POST_FAIL, GET_POST_REQUEST, GET_POST_SUCCESS} from "./PostType";
-
 const initialState = {
     boards:{
         list: [],
@@ -8,10 +7,8 @@ const initialState = {
         error: false
     }
 }
-
 const postReducer = createReducer(initialState, {
     [GET_POST_REQUEST]: (state, action) => {
-        console.log('get post request reducer:', action)
         return{
             ...state,
             boards: {

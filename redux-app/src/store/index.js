@@ -1,15 +1,13 @@
 import {combineReducers} from "redux";
-import counter from './counter/CounterReducer'
 import post from './post/PostReducer'
 import createSagaMiddleware from "@redux-saga/core";
-import {configureStore, getDefaultMiddleware} from "@reduxjs/toolkit";
+import {configureStore} from "@reduxjs/toolkit";
 import {all, fork} from "@redux-saga/core/effects";
 import {postSaga} from "./post/PostSaga";
 const rootReducer = combineReducers({
-    counter,
     post
 })
-const rootSaga = function*(){
+export const rootSaga = function*(){
     yield all([
         fork(postSaga)
     ])
