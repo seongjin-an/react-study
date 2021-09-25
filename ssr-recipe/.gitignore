@@ -21,3 +21,6 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+/dist/js/pages-BluePage.chunk.js
+/dist/js/pages-RedPage.chunk.js
+/dist/js/pages-UsersPage.chunk.js
