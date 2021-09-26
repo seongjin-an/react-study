@@ -1,7 +1,8 @@
 import * as React from "react";
 import { Omit } from "utility-types";
+import {MouseEventHandler} from "react";
 
-import "../../../styles/style.scss";
+// import "../../../styles/style.scss";
 
 export enum ButtonVariant {
     Default,
@@ -13,9 +14,9 @@ export enum ButtonVariant {
 export const Button: React.FC<{
     variant?: ButtonVariant;
     children?: React.ReactNode;
-    onClick?: () => void;
+    onClick?: (event:MouseEvent) => void
     style?: React.CSSProperties;
-}> = ({ variant, style, ...rest }) =>{
+}> = ({ variant, style, onClick,...rest }) =>{
     return<button
         style={Object.assign(
             variant === ButtonVariant.Primary
