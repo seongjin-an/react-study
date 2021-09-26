@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`/////JestTestApp///// should match snapshot 1`] = `
+<div>
+  <div
+    class="myApp"
+  >
+    hello halo 
+    28
+    <ul>
+      <li>
+        <label>
+          이름: 
+          <input />
+        </label>
+      </li>
+      <li>
+        <label>
+          나이: 
+          <input />
+        </label>
+      </li>
+    </ul>
+  </div>
+</div>
+`;
