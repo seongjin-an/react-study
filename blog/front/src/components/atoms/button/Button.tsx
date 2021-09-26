@@ -3,7 +3,7 @@ import { Omit } from "utility-types";
 
 import "../../../styles/style.scss";
 
-enum ButtonVariant {
+export enum ButtonVariant {
     Default,
     Primary
 }
@@ -15,8 +15,8 @@ export const Button: React.FC<{
     children?: React.ReactNode;
     onClick?: () => void;
     style?: React.CSSProperties;
-}> = ({ variant, style, ...rest }) => (
-    <button
+}> = ({ variant, style, ...rest }) =>{
+    return<button
         style={Object.assign(
             variant === ButtonVariant.Primary
                 ? {
@@ -28,7 +28,7 @@ export const Button: React.FC<{
         )}
         {...rest}
     />
-);
+}
 
 Button.defaultProps = {
     variant: ButtonVariant.Default
