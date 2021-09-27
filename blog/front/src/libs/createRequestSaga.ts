@@ -3,7 +3,7 @@ import {PayloadAction} from "@reduxjs/toolkit";
 import {finishLoading, startLoading} from "../modules/loading/loadingAction";
 import {AxiosPromise, AxiosResponse} from "axios";
 
-export default function createRequestSaga(type: string, request: any){
+export default function createRequestSaga(type: string, request: ({...params}) => void){
     const SUCCESS = `${type}_SUCCESS`
     const FAILURE = `${type}_FAIL`
     return function*(action:PayloadAction<{username:string, password:string}>){
