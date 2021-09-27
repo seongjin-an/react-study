@@ -1,4 +1,4 @@
-import React, {ChangeEvent, MouseEventHandler} from "react";
+import React, {ChangeEvent, MouseEvent} from "react";
 import {Input} from "../../atoms/input";
 import {AuthFooter} from "./AuthFooter";
 import {Link} from 'react-router-dom'
@@ -8,6 +8,10 @@ export const AuthForm: React.FC<{
     type: EFormType,
     onChange: (event:ChangeEvent<HTMLInputElement>) => {}
 }> = ({type, onChange}) => {
+    const handleClick = (event:MouseEvent<HTMLButtonElement>) => {
+        event.preventDefault()
+        console.log('hi')
+    }
     return<>
         <form>
             <Input autoComplete={"username"} name={"username"} placeholder={"아이디"} onChange={onChange}/>
@@ -15,7 +19,7 @@ export const AuthForm: React.FC<{
             {type===EFormType.register&&
                 <Input type={"password"} autoComplete={"new-password"} name={"passwordConfirm"} placeholder={"비밀번호 확인"} onChange={onChange}/>
             }
-            <CommonButton cyan fullWidth style={{marginTop: '1rem'}} onClick={(event:MouseEvent)=> {event.preventDefault(); console.log('hi') }}>
+            <CommonButton cyan fullWidth style={{marginTop: '1rem'}} onClick={handleClick}>
                 {type===EFormType.login? '로그인' : '회원가입'}
             </CommonButton>
         </form>

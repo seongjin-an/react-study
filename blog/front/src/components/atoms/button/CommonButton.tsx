@@ -2,24 +2,19 @@ import React from "react";
 import {ButtonProps} from "./Button";
 import styled, {css} from "styled-components";
 import palette from "../../../libs/styles/palette";
+import {Omit} from "utility-types";
 type Imsi = {
     fullWidth?: boolean
     cyan?: boolean
 }
 export const CommonButton: React.FC<ButtonProps & Imsi> =
     ({style, children, onClick, ...rest}) => {
-    return<StyledButton styling={style} {...rest} onClick={onClick}>
+    return<StyledButton style={style} onClick={onClick} {...rest}>
         {children}
     </StyledButton>
 }
 export type CommonButtonProps = React.ComponentProps<typeof CommonButton>
-type StyledCommonButtonProps = Omit<CommonButtonProps, "onClick">
-const StyledButton = styled.button<{
-    styling?: React.CSSProperties,
-    fullWidth?: boolean,
-    cyan?: boolean,
-    onClick?: any
-}>`
+const StyledButton = styled.button<CommonButtonProps>`
   border: none;
   border-radius: 4px;
   font-size: 1rem;
@@ -34,7 +29,7 @@ const StyledButton = styled.button<{
     background: ${palette.gray[6]};
   }
   //css(styling)
-  ${props => ({...props.styling})}
+  ${props => ({...props.style})}
   ${({fullWidth}) => fullWidth && css`
     padding-top: 0.75rem;
     padding-bottom: 0.75rem;
