@@ -1,10 +1,11 @@
 import {Provider} from "react-redux";
 import {createStore} from "../modules";
-import {render, waitFor, fireEvent} from "@testing-library/react";
+import {render, screen, waitFor, fireEvent} from "@testing-library/react";
 import {AnyAction, Store} from "@reduxjs/toolkit";
 import {BrowserRouter} from "react-router-dom";
 import React from "react";
 import {LoginPage} from "../pages/login";
+import "@testing-library/jest-dom/extend-expect";
 
 
 describe('Auth Component', () => {
@@ -20,6 +21,8 @@ describe('Auth Component', () => {
                 </BrowserRouter>
             </Provider>
         )
+        const header = screen.getByText(/REACTERS/i)
+        expect(header).toBeInTheDocument()//import @testing-library/jest-dom/extend-expect 필요함
         expect(getByText(/REACTERS/i))
         expect(getAllByText(/로그인/i))
         await waitFor(()=>{
