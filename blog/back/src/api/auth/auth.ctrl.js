@@ -34,12 +34,15 @@ export const register = async ctx => {
 
         // const data = user.toJSON()
         // delete data.hashedPassword
-        ctx.body = user.serialize()
+        const data = user.serialize()
+        ctx.body = data
+        ctx.data = data
         const token = user.generateToken()
         ctx.cookies.set('access-token', token, {
             maxAge: 1000 * 60 * 60 * 24 * 7,
             httpOnly: true
         })
+
     }catch(e) {
         ctx.throw(500, e)
     }

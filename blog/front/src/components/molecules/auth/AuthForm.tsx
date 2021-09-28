@@ -7,11 +7,8 @@ import {EFormType} from "../../organisms/auth/AuthArea";
 export const AuthForm: React.FC<{
     type: EFormType,
     onChange: (event:ChangeEvent<HTMLInputElement>) => {}
-}> = ({type, onChange}) => {
-    const handleClick = (event:MouseEvent<HTMLButtonElement>) => {
-        event.preventDefault()
-        console.log('hi')
-    }
+    onSubmit: (event:MouseEvent<HTMLButtonElement>) => void
+}> = ({type, onChange, onSubmit}) => {
     return<>
         <form>
             <Input autoComplete={"username"} name={"username"} placeholder={"아이디"} onChange={onChange}/>
@@ -19,7 +16,7 @@ export const AuthForm: React.FC<{
             {type===EFormType.register&&
                 <Input type={"password"} autoComplete={"new-password"} name={"passwordConfirm"} placeholder={"비밀번호 확인"} onChange={onChange}/>
             }
-            <CommonButton cyan fullWidth style={{marginTop: '1rem'}} onClick={handleClick}>
+            <CommonButton cyan fullWidth style={{marginTop: '1rem'}} onClick={onSubmit}>
                 {type===EFormType.login? '로그인' : '회원가입'}
             </CommonButton>
         </form>

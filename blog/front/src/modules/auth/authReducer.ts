@@ -18,7 +18,7 @@ type TLogin = {
     username: string
     password: string
 }
-type TMsg = {
+export type TMsg = {
     username: string
     _id: string,
     __v: string

@@ -1,15 +1,16 @@
 import {put, call} from '@redux-saga/core/effects'
 import {PayloadAction} from "@reduxjs/toolkit";
 import {finishLoading, startLoading} from "../modules/loading/loadingAction";
-import {AxiosPromise, AxiosResponse} from "axios";
+import {AxiosResponse} from "axios";
 
-export default function createRequestSaga(type: string, request: ({...params}) => void){
+export default function createRequestSaga(type: string, request:any){
     const SUCCESS = `${type}_SUCCESS`
-    const FAILURE = `${type}_FAIL`
-    return function*(action:PayloadAction<{username:string, password:string}>){
+    const FAILURE = `${type}_FAILURE`
+    return function*(action:PayloadAction){
         yield put(startLoading(type))
         try{
             const response:AxiosResponse = yield call(request, action.payload)
+            console.log('response:', response)
             yield put({
                 type: SUCCESS,
                 payload: response.data
