@@ -8,4 +8,4 @@ export const changeField = createAction<TField>(CHANGE_FIELD)
 export const initializeForm = createAction<TForm>(INITIALIZE_FORM)
 
 export const registerAction = createAction<TLogin>(REGISTER_REQUEST)
-export const loginAction = createAction(LOGIN_REQUEST)
+export const loginAction = createAction<TLogin>(LOGIN_REQUEST)

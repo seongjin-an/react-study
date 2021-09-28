@@ -1,12 +1,13 @@
-import React, {ChangeEvent, MouseEvent, useEffect} from "react";
+import React, {ChangeEvent, MouseEvent, useEffect, useState} from "react";
 import styled from "styled-components";
 import palette from "../../../libs/styles/palette";
 import {AuthForm} from "../../molecules/auth";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../../modules";
-import {changeField, initializeForm, registerAction} from "../../../modules/auth/authAction";
+import {changeField, initializeForm, loginAction, registerAction} from "../../../modules/auth/authAction";
 import {checkAction} from "../../../modules/user/userAction";
 import { withRouter } from "react-router-dom";
+import {check} from "../../../libs/api/auth";
 export enum EFormType {
     login, register
 }
@@ -14,6 +15,7 @@ export const AuthArea: React.FC<{
     type: EFormType
 }> = ({type}) => {
     const dispatch = useDispatch()
+    const [error, setError] = useState<string>('')
     const {form, auth, authError, user} = useSelector(({auth, user}: RootState) => ({
         form: type === EFormType.login ? auth.login : auth.register,
         auth: auth.auth,
@@ -28,11 +30,15 @@ export const AuthArea: React.FC<{
         event.preventDefault()
         if(type===EFormType.login){
             const {username, password} = form
-
+            dispatch(loginAction({username, password}))
         }else if (type===EFormType.register){
             const {username, password, passwordConfirm} = form
-            console.log(`username: ${username} / password: ${password} / passwordConfirm: ${passwordConfirm}`)
+            if([username, password, passwordConfirm].includes('')){
+                setError('빈 칸을 모두 입력하세요.')
+                return
+            }
             if(password!==passwordConfirm){
+                setError('비밀번호가 일치하지 않습니다.')
                 return
             }
             dispatch(registerAction({username, password}))
@@ -45,12 +51,27 @@ export const AuthArea: React.FC<{
         if(authError){
             console.log('오류 발생')
             console.log(authError)
-            return;
+            if(type===EFormType.login) {
+                setError('로그인 실패')
+                return
+            }else if(type===EFormType.register){
+                if(authError.response.status === 409) {
+                    setError('이미 존재하는 계정명입니다.')
+                    return
+                }
+                setError('회원가입 실패')
+                return
+            }
         }
         if(auth){
-            console.log('회원가입 성공')
-            console.log(auth)
-            dispatch(checkAction())
+            if(type===EFormType.login) {
+                console.log('로그인 성공')
+                dispatch(checkAction())
+            }else if(type===EFormType.register){
+                console.log('회원가입 성공')
+                console.log(auth)
+                dispatch(checkAction())
+            }
         }
     }, [auth, authError, dispatch])
     useEffect(() => {
@@ -62,7 +83,7 @@ export const AuthArea: React.FC<{
     }, [user])
     return<StyledAuthArea>
         <h3>{type===EFormType.login? '로그인' : '회원가입'}</h3>
-        <AuthForm type={type} onChange={handleChangeInput} onSubmit={handleSubmit}/>
+        <AuthForm type={type} onChange={handleChangeInput} onSubmit={handleSubmit} error={error}/>
     </StyledAuthArea>
 }
 
