@@ -18,7 +18,7 @@ export const AuthForm: React.FC<{
             {type===EFormType.register&&
                 <Input type={"password"} autoComplete={"new-password"} name={"passwordConfirm"} placeholder={"비밀번호 확인"} onChange={onChange}/>
             }
-            {error && <ErrorMessage>{error}</ErrorMessage>}
+            {error && <ErrorMessage data-testid={'ansj'}>{error}</ErrorMessage>}
             <CommonButton cyan fullWidth style={{marginTop: '1rem'}} onClick={onSubmit}>
                 {type===EFormType.login? '로그인' : '회원가입'}
             </CommonButton>
