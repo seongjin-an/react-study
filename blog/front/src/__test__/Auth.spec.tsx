@@ -40,7 +40,7 @@ describe('Auth Component', () => {
         // })
         // expect(failure).not.toBeNull()
 
-        await waitFor(()=>{
+        await waitFor(()=>{ 
             const inputs = document.querySelectorAll('input')
             expect(inputs.length).toBe(2)
         })
