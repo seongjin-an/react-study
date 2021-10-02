@@ -21,5 +21,6 @@ module.exports = {
         '/node_modules/',
         '^.+\\.module\\.(css|sass|scss)$',
     ],
+    snapshotSerializers: ['enzyme-to-json/serializer']
 };
 export {}

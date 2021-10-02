@@ -1,0 +1,202 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`auth component should match snapshot 1`] = `
+<Provider
+  store={
+    Object {
+      "@@observable": [Function],
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <BrowserRouter>
+    <Router
+      history={
+        Object {
+          "action": "POP",
+          "block": [Function],
+          "createHref": [Function],
+          "go": [Function],
+          "goBack": [Function],
+          "goForward": [Function],
+          "length": 1,
+          "listen": [Function],
+          "location": Object {
+            "hash": "",
+            "pathname": "/",
+            "search": "",
+            "state": undefined,
+          },
+          "push": [Function],
+          "replace": [Function],
+        }
+      }
+    >
+      <LoginPage>
+        <AuthTemplate>
+          <styled.div>
+            <div
+              className="sc-bdfBQB binGTg"
+            >
+              <styled.div>
+                <div
+                  className="sc-gsTEea dahxES"
+                >
+                  <div
+                    className="logo-area"
+                  >
+                    <Link
+                      to="/"
+                    >
+                      <LinkAnchor
+                        href="/"
+                        navigate={[Function]}
+                      >
+                        <a
+                          href="/"
+                          onClick={[Function]}
+                        >
+                          REACTERS
+                        </a>
+                      </LinkAnchor>
+                    </Link>
+                  </div>
+                  <AuthArea
+                    type={0}
+                  >
+                    <styled.div>
+                      <div
+                        className="sc-gKseQn gNkDtN"
+                      >
+                        <h3>
+                          로그인
+                        </h3>
+                        <AuthForm
+                          error=""
+                          onChange={[Function]}
+                          onSubmit={[Function]}
+                          type={0}
+                        >
+                          <form>
+                            <Input
+                              autoComplete="username"
+                              name="username"
+                              onChange={[Function]}
+                              placeholder="아이디"
+                              type="text"
+                            >
+                              <styled.input
+                                autoComplete="username"
+                                name="username"
+                                onChange={[Function]}
+                                placeholder="아이디"
+                                type="text"
+                              >
+                                <input
+                                  autoComplete="username"
+                                  className="sc-dlfnuX duNDNx"
+                                  name="username"
+                                  onChange={[Function]}
+                                  placeholder="아이디"
+                                  type="text"
+                                />
+                              </styled.input>
+                            </Input>
+                            <Input
+                              autoComplete="new-password"
+                              name="password"
+                              onChange={[Function]}
+                              placeholder="비밀번호"
+                              type="password"
+                            >
+                              <styled.input
+                                autoComplete="new-password"
+                                name="password"
+                                onChange={[Function]}
+                                placeholder="비밀번호"
+                                type="password"
+                              >
+                                <input
+                                  autoComplete="new-password"
+                                  className="sc-dlfnuX duNDNx"
+                                  name="password"
+                                  onChange={[Function]}
+                                  placeholder="비밀번호"
+                                  type="password"
+                                />
+                              </styled.input>
+                            </Input>
+                            <CommonButton
+                              cyan={true}
+                              fullWidth={true}
+                              onClick={[Function]}
+                              style={
+                                Object {
+                                  "marginTop": "1rem",
+                                }
+                              }
+                            >
+                              <styled.button
+                                cyan={true}
+                                fullWidth={true}
+                                onClick={[Function]}
+                                style={
+                                  Object {
+                                    "marginTop": "1rem",
+                                  }
+                                }
+                              >
+                                <button
+                                  className="sc-eCstlR eeLcBN"
+                                  onClick={[Function]}
+                                  style={
+                                    Object {
+                                      "marginTop": "1rem",
+                                    }
+                                  }
+                                >
+                                  로그인
+                                </button>
+                              </styled.button>
+                            </CommonButton>
+                          </form>
+                          <AuthFooter>
+                            <styled.div>
+                              <div
+                                className="sc-hKgJUU jwSaWL"
+                              >
+                                <Link
+                                  to="/register"
+                                >
+                                  <LinkAnchor
+                                    href="/register"
+                                    navigate={[Function]}
+                                  >
+                                    <a
+                                      href="/register"
+                                      onClick={[Function]}
+                                    >
+                                      회원가입
+                                    </a>
+                                  </LinkAnchor>
+                                </Link>
+                              </div>
+                            </styled.div>
+                          </AuthFooter>
+                        </AuthForm>
+                      </div>
+                    </styled.div>
+                  </AuthArea>
+                </div>
+              </styled.div>
+            </div>
+          </styled.div>
+        </AuthTemplate>
+      </LoginPage>
+    </Router>
+  </BrowserRouter>
+</Provider>
+`;

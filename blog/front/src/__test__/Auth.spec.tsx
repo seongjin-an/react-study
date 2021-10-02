@@ -13,7 +13,7 @@ describe('Auth Component', () => {
     beforeEach(() => {
         store = createStore()
     });
-    test('initialize', async () => {
+    it('initialize', async () => {
         const { getByText, getAllByText } = render(
             <Provider store={store}>
                 <BrowserRouter>
@@ -35,12 +35,14 @@ describe('Auth Component', () => {
             const failure = screen.getByText('로그인 실패')
             expect(failure).toBeInTheDocument()
         })
+        const failure = await screen.findByText('로그인 실패')
+        expect(failure).toBeInTheDocument()
         // const failure = getByText((content:string, element:Element|null)=>{
         //     return (content.startsWith('로그인 실패') && element?.tagName.toLowerCase()==='div')
         // })
         // expect(failure).not.toBeNull()
 
-        await waitFor(()=>{ 
+        await waitFor(()=>{
             const inputs = document.querySelectorAll('input')
             expect(inputs.length).toBe(2)
         })
