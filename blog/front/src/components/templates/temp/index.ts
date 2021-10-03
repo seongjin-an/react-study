@@ -1,0 +1,1 @@
+export {TempPostsTemplate} from './TempPostsTemplate'
