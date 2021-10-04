@@ -2,7 +2,7 @@ import React, {ChangeEvent} from "react";
 import styled from "styled-components";
 import palette from "../../../libs/styles/palette";
 
-export const Input: React.FC<{
+export const AuthInput: React.FC<{
     type?: string
     autoComplete: string,
     name: string,
@@ -11,8 +11,8 @@ export const Input: React.FC<{
 }> = ({onChange, ...rest}) => {
     return <StyledInput {...rest} onChange={onChange}/>
 }
-Input.defaultProps = {type: "text"}
-export type InputProps = React.ComponentProps<typeof Input>
+AuthInput.defaultProps = {type: "text"}
+export type AuthInputProps = React.ComponentProps<typeof AuthInput>
 const StyledInput = styled.input`
   font-size: 1rem;
   border: none;
@@ -21,7 +21,6 @@ const StyledInput = styled.input`
   outline: none;
   width: 100%;
   &:focus{
-    color: $oc-teal-7;
     border-bottom: 1px solid ${palette.gray[7]};
   }
   & + &{

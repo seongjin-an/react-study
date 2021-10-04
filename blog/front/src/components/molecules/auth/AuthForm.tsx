@@ -1,5 +1,5 @@
 import React, {ChangeEvent, MouseEvent} from "react";
-import {Input} from "../../atoms/input";
+import {AuthInput} from "../../atoms/input";
 import {AuthFooter} from "./AuthFooter";
 import {Link} from 'react-router-dom'
 import {EFormType} from "../../organisms/auth/AuthArea";
@@ -14,10 +14,10 @@ interface IAuthFormProps{
 export const AuthForm = ({type, onChange, onSubmit, error}: IAuthFormProps) => {
     return<>
         <form>
-            <Input autoComplete={"username"} name={"username"} placeholder={"아이디"} onChange={onChange}/>
-            <Input type={"password"} autoComplete={"new-password"} name={"password"} placeholder={"비밀번호"} onChange={onChange}/>
+            <AuthInput autoComplete={"username"} name={"username"} placeholder={"아이디"} onChange={onChange}/>
+            <AuthInput type={"password"} autoComplete={"new-password"} name={"password"} placeholder={"비밀번호"} onChange={onChange}/>
             {type===EFormType.register&&
-                <Input type={"password"} autoComplete={"new-password"} name={"passwordConfirm"} placeholder={"비밀번호 확인"} onChange={onChange}/>
+                <AuthInput type={"password"} autoComplete={"new-password"} name={"passwordConfirm"} placeholder={"비밀번호 확인"} onChange={onChange}/>
             }
             {error && <ErrorMessage data-testid={'ansj'}>{error}</ErrorMessage>}
             <CommonButton cyan fullWidth style={{marginTop: '1rem'}} onClick={onSubmit}>

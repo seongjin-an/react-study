@@ -81,7 +81,7 @@ exports[`auth component should match snapshot 1`] = `
                           type={0}
                         >
                           <form>
-                            <Input
+                            <AuthInput
                               autoComplete="username"
                               name="username"
                               onChange={[Function]}
@@ -104,8 +104,8 @@ exports[`auth component should match snapshot 1`] = `
                                   type="text"
                                 />
                               </styled.input>
-                            </Input>
-                            <Input
+                            </AuthInput>
+                            <AuthInput
                               autoComplete="new-password"
                               name="password"
                               onChange={[Function]}
@@ -128,7 +128,7 @@ exports[`auth component should match snapshot 1`] = `
                                   type="password"
                                 />
                               </styled.input>
-                            </Input>
+                            </AuthInput>
                             <CommonButton
                               cyan={true}
                               fullWidth={true}

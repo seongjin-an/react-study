@@ -1,2 +1,3 @@
-export type {InputProps} from './Input'
-export {Input} from './Input'
+export type {AuthInputProps} from './AuthInput'
+export {AuthInput} from './AuthInput'
+export {EditorInput} from './EditorInput'
