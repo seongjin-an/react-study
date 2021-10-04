@@ -1,12 +1,12 @@
 import {AxiosResponse} from "axios";
 import {createReducer} from "@reduxjs/toolkit";
-import {CHECK_FAILURE, CHECK_SUCCESS} from "./userType";
+import {CHECK_FAILURE, CHECK_SUCCESS, LOGOUT, TEMP_SET_USER} from "./userType";
 
 export type TLogin = {
     username: string
     password: string
 }
-type TId = {
+export type TId = {
     _id: string
     username: string
 }
@@ -20,6 +20,12 @@ const initialState = {
 } as TUser
 
 const user = createReducer(initialState, {
+    [TEMP_SET_USER]: (state: TUser, action) => {
+        return{
+            ...state,
+            user: action.payload
+        }
+    },
     [CHECK_SUCCESS]: (state:TUser, action) => {
         return{
             ...state,
@@ -32,6 +38,12 @@ const user = createReducer(initialState, {
             ...state,
             user: null,
             checkError: action.payload
+        }
+    },
+    [LOGOUT]: (state:TUser, action) => {
+        return{
+            ...state,
+            user: null
         }
     }
 })
