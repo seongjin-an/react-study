@@ -1,7 +1,6 @@
 import React from "react";
 import {AuthTemplate} from "../../components/templates/auth";
-import {AuthArea} from "../../components/organisms/auth";
-import {EFormType} from "../../components/organisms/auth/AuthArea";
+import AuthArea, {EFormType} from "../../components/organisms/auth/AuthArea";
 interface ILoginPageProps{
     children?: React.ReactNode
 }

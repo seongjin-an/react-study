@@ -1,7 +1,7 @@
 import {AlertButton, Button} from "../../components/atoms/button";
 import {ButtonVariant} from "../../components/atoms/button/Button";
 import React from "react";
-import {CommonButton} from "../../components/atoms/button/CommonButton";
+import {CommonButton} from "../../components/atoms/common/CommonButton";
 
 export const TempPage = () => {
     return<>

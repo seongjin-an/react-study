@@ -66,6 +66,7 @@
     "react-query": "^3.25.0",
     "react-redux": "^7.2.5",
     "react-refresh": "^0.8.3",
+    "react-router": "^5.2.1",
     "react-router-dom": "^5.3.0",
     "redux": "^4.1.1",
     "redux-actions": "^2.6.5",

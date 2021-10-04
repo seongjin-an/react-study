@@ -6,7 +6,20 @@ import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from "react-router-dom";
 import {createStore} from "./modules";
 import {Provider} from "react-redux";
+import {checkAction, tempSetUser} from "./modules/user/userAction";
 const store = createStore()
+function loadUser(){
+    try{
+        const user:string | null = localStorage.getItem('user')
+        console.log('.................user:', user)
+        if(!user) return
+        store.dispatch(tempSetUser(user))
+        store.dispatch(checkAction())
+    }catch(error){
+        console.log('localStorage is not working')
+    }
+}
+loadUser()
 ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>

@@ -1,0 +1,1 @@
+export {PostListTemplate} from './PostListTemplate'

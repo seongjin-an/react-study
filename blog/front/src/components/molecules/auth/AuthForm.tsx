@@ -2,15 +2,16 @@ import React, {ChangeEvent, MouseEvent} from "react";
 import {Input} from "../../atoms/input";
 import {AuthFooter} from "./AuthFooter";
 import {Link} from 'react-router-dom'
-import {CommonButton} from "../../atoms/button";
 import {EFormType} from "../../organisms/auth/AuthArea";
 import styled from "styled-components";
-export const AuthForm: React.FC<{
+import {CommonButton} from "../../atoms/common";
+interface IAuthFormProps{
     type: EFormType,
     onChange: (event:ChangeEvent<HTMLInputElement>) => {}
     onSubmit: (event:MouseEvent<HTMLButtonElement>) => void
     error: string
-}> = ({type, onChange, onSubmit, error}) => {
+}
+export const AuthForm = ({type, onChange, onSubmit, error}: IAuthFormProps) => {
     return<>
         <form>
             <Input autoComplete={"username"} name={"username"} placeholder={"아이디"} onChange={onChange}/>

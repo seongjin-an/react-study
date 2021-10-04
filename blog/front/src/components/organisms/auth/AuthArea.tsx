@@ -1,19 +1,19 @@
-import React, {ChangeEvent, MouseEvent, useEffect, useState} from "react";
+import React, {ChangeEvent, ComponentType, MouseEvent, useEffect, useState} from "react";
 import styled from "styled-components";
 import palette from "../../../libs/styles/palette";
-import {AuthForm} from "../../molecules/auth";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../../modules";
 import {changeField, initializeForm, loginAction, registerAction} from "../../../modules/auth/authAction";
 import {checkAction} from "../../../modules/user/userAction";
-import { withRouter } from "react-router-dom";
-import {check} from "../../../libs/api/auth";
+import {AuthForm} from "../../molecules/auth";
+import {RouteComponentProps, withRouter} from "react-router";
 export enum EFormType {
     login, register
 }
-export const AuthArea: React.FC<{
+interface IAuthAreaProps extends RouteComponentProps {
     type: EFormType
-}> = ({type}) => {
+}
+const AuthArea = ({type, history}: IAuthAreaProps) => {
     const dispatch = useDispatch()
     const [error, setError] = useState<string>('')
     const {form, auth, authError, user} = useSelector(({auth, user}: RootState) => ({
@@ -76,9 +76,14 @@ export const AuthArea: React.FC<{
     }, [auth, authError, dispatch])
     useEffect(() => {
         if(user){
-            console.log('check api 성공')
-            console.log('user')
-            window.location.href='/'//react-router-dom withRouter() history.push('/')
+            history.push('/')
+            console.log('user...:', user)
+            // window.location.href='/'
+            try{
+                localStorage.setItem('user', JSON.stringify(user))
+            }catch(error){
+                console.log('localStorage is not working')
+            }
         }
     }, [user])
     return<StyledAuthArea>
@@ -88,6 +93,7 @@ export const AuthArea: React.FC<{
 }
 
 export type AuthAreaProps = React.ComponentProps<typeof AuthArea>
+export default withRouter<IAuthAreaProps, ComponentType<IAuthAreaProps>>(AuthArea)
 const StyledAuthArea = styled.div`
   h3{
     margin: 0;
