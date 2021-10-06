@@ -48,7 +48,7 @@ export const Player = () => {
             let webrtcSendChannelInterval;
             webrtcSendChannelInterval = setInterval(() => {
                 webrtcSendChannel.send('ping');
-            }, 10000)
+            }, 1000)
         }
 
         webrtcSendChannel.onmessage = e => console.log(e.data);
