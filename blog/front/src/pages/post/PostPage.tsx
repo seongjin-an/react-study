@@ -1,6 +1,6 @@
 import React from "react";
-import {PostViewer} from "../../components/templates/post";
+import {PostViewerTemplate} from "../../components/templates/post";
 
 export const PostPage = () => {
-    return<PostViewer/>
+    return<PostViewerTemplate/>
 }

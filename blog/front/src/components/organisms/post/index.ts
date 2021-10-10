@@ -1,1 +1,1 @@
-export {PostHead} from './PostHead'
+export {PostViewer} from './PostViewer'

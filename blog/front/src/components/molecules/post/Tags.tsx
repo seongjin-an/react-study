@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 import palette from "../../../libs/styles/palette";
-
-export const Tags = () => {
+interface ITagsProps{
+    tags: string[]
+}
+export const Tags = ({tags}: ITagsProps) => {
     return<StyledTags>
-        <div className="tag">#태그1</div>
-        <div className="tag">#태그2</div>
-        <div className="tag">#태그3</div>
+        {tags.map(tag => <div key={tag} className="tag">#{tag}</div>)}
     </StyledTags>
 }
 const StyledTags = styled.div`

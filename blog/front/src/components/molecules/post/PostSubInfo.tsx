@@ -1,14 +1,17 @@
 import React from "react";
 import styled from "styled-components";
 import palette from "../../../libs/styles/palette";
-
-export const PostSubInfo = () => {
+interface IPostSubInfoProps{
+    user: string
+    publishedDate: string
+}
+export const PostSubInfo = ({user, publishedDate}: IPostSubInfoProps) => {
     return(
         <StyledPostSubInfo>
             <span>
-                <b>tester</b>
+                <b>{user}</b>
             </span>
-            <span>{new Date().toLocaleDateString()}</span>
+            <span>{new Date(publishedDate).toLocaleDateString()}</span>
         </StyledPostSubInfo>
     )
 }

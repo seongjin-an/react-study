@@ -1,1 +1,1 @@
-export {PostViewer} from './PostViewer'
+export {PostViewerTemplate} from './PostViewerTemplate'

@@ -1,25 +1,18 @@
 import React from "react";
 import styled from "styled-components";
-import {Header, Responsive} from "../../organisms/common";
-import {PostHead} from "../../organisms/post";
+import {Header} from "../../organisms/common";
+import PostViewer from "../../organisms/post/PostViewer";
 import palette from "../../../libs/styles/palette";
 
-export const PostViewer = () => {
+export const PostViewerTemplate = () => {
     return(
         <>
             <Header />
-            <StyledPostViewerBlock>
-                <PostHead/>
-
-            </StyledPostViewerBlock>
+            <PostViewer/>
             <StyledPostContent dangerouslySetInnerHTML={{__html: '<p>HTML <b>내용</b>입니다.</p>'}}/>
         </>
     )
 }
-const StyledPostViewerBlock = styled(Responsive)`
-  margin-top: 4rem;
-  display: flex;
-`
 const StyledPostContent = styled.div`
   display:flex;
   padding-left: 1rem;
