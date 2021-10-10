@@ -1,12 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import palette from "../../../libs/styles/palette";
+import { Link } from 'react-router-dom'
 interface ITagsProps{
     tags: string[]
 }
 export const Tags = ({tags}: ITagsProps) => {
     return<StyledTags>
-        {tags.map(tag => <div key={tag} className="tag">#{tag}</div>)}
+        {tags.map(tag => <Link key={tag} className="tag" to={`/?tag=${tag}`}>#{tag}</Link>)}
     </StyledTags>
 }
 const StyledTags = styled.div`

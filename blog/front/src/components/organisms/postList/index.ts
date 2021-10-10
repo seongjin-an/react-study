@@ -1,0 +1,1 @@
+export {PostListArea} from './PostListArea'

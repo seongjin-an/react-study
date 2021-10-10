@@ -1,13 +1,14 @@
 import React from "react";
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 import palette from "../../../libs/styles/palette";
 interface IPostSubInfoProps{
     user: string
     publishedDate: string
+    hasMarginTop: boolean
 }
-export const PostSubInfo = ({user, publishedDate}: IPostSubInfoProps) => {
+export const PostSubInfo = ({user, publishedDate, hasMarginTop}: IPostSubInfoProps) => {
     return(
-        <StyledPostSubInfo>
+        <StyledPostSubInfo hasMarginTop={hasMarginTop}>
             <span>
                 <b>{user}</b>
             </span>
@@ -15,8 +16,12 @@ export const PostSubInfo = ({user, publishedDate}: IPostSubInfoProps) => {
         </StyledPostSubInfo>
     )
 }
-const StyledPostSubInfo = styled.div`
-  margin-top: 1rem;
+const StyledPostSubInfo = styled.div<{
+    hasMarginTop: boolean
+}>`
+  ${props => props.hasMarginTop && css`
+    margin-top: 1rem;
+  `}
   color: ${palette.gray[6]};
   span + span:before{
     color: ${palette.gray[5]};

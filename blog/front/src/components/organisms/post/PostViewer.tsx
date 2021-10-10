@@ -1,7 +1,7 @@
 import React, {ComponentType, useEffect, useState} from "react";
 import styled from "styled-components";
 import palette from "../../../libs/styles/palette";
-import {PostSubInfo, Tags} from "../../molecules/post";
+import {PostSubInfo, Tags} from "../../molecules/common";
 import {Responsive} from "../common";
 import {RouteComponentProps, withRouter} from "react-router";
 import {useDispatch, useSelector} from "react-redux";
@@ -41,7 +41,7 @@ export const PostViewer = ({match}: IPostViewerProps) => {
         <StyledPostViewerBlock>
             <StyledPostHead>
                 <h1>{post.title}</h1>
-                <PostSubInfo user={post.user.username} publishedDate={post.publishedDate}/>
+                <PostSubInfo user={post.user.username} publishedDate={post.publishedDate} hasMarginTop/>
                 <Tags tags={post.tags}/>
             </StyledPostHead>
         </StyledPostViewerBlock>
