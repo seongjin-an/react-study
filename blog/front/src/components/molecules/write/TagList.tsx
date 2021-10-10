@@ -8,7 +8,7 @@ interface ITagListProps{
 export const TagList = React.memo(({tags, onRemove}:ITagListProps) => {
     return(
         <TagListBlock>
-            {tags.map(tag=><TagItem key={tag} tag={tag} onRemove={onRemove}/>)}
+            {tags.map(tag=><TagItem key={tag} tag={tag} onRemove={onRemove} />)}
         </TagListBlock>
     )
 })

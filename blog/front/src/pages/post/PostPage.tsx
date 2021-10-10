@@ -1,5 +1,6 @@
 import React from "react";
+import {PostViewer} from "../../components/templates/post";
 
 export const PostPage = () => {
-    return<div>포스트 읽기</div>
+    return<PostViewer/>
 }

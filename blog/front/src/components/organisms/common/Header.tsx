@@ -38,10 +38,10 @@ export const Header: React.FC<{
     )
 }
 const HeaderBlock = styled.div`
-  position: fixed;
+  //position: fixed;
   width: 100%;
   background: white;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
 `
 const Wrapper = styled(Responsive)`
   height: 4rem;
