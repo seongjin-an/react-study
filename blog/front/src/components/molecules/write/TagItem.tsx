@@ -3,10 +3,11 @@ import styled from "styled-components";
 import palette from "../../../libs/styles/palette";
 interface ITagItemProps{
     tag: string
+    onRemove: (tag: string) => void
 }
-export const TagItem = React.memo(({tag}:ITagItemProps) => {
+export const TagItem = React.memo(({tag, onRemove}:ITagItemProps) => {
     return(
-        <StyledTag>#{tag}</StyledTag>
+        <StyledTag onClick={()=>onRemove(tag)}>#{tag}</StyledTag>
     )
 })
 const StyledTag = styled.div`

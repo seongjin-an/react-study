@@ -1,21 +1,21 @@
-import React, {ChangeEvent, MouseEvent} from "react";
+import React, {ChangeEvent, FormEvent, MouseEvent} from "react";
 import styled from "styled-components";
 import palette from "../../../libs/styles/palette";
 interface ITagForm {
-    onSubmitForm: (event: MouseEvent<HTMLButtonElement>) => void
+    onSubmitForm: (event: FormEvent<HTMLFormElement>) => void
     value: string
     onChange: (event: ChangeEvent<HTMLInputElement>) => void
 }
 
 export const TagForm = ({onSubmitForm, value, onChange}:ITagForm) => {
     return(
-        <StyledTagForm>
-            <input placeholder="태그를 입력하세요"/>
+        <StyledTagFormWrapper onSubmit={onSubmitForm}>
+            <input placeholder="태그를 입력하세요" value={value} onChange={onChange}/>
             <button type="submit">추가</button>
-        </StyledTagForm>
+        </StyledTagFormWrapper>
     )
 }
-const StyledTagForm = styled.form`
+const StyledTagFormWrapper = styled.form`
   border-radius: 4px;
   overflow: hidden;
   display: flex;

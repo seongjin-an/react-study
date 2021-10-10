@@ -1,16 +1,36 @@
-import React, {useEffect, useMemo, useRef, useState} from "react";
+import React, {ChangeEvent, useCallback, useEffect, useMemo, useRef, useState} from "react";
 import styled from "styled-components";
 import {Responsive} from "../common";
 import {EditorInput} from "../../atoms/input";
 import {QuillWrapper} from "../../molecules/write";
-import Quill from 'quill'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
 import {AxiosError} from "axios";
+import {useDispatch, useSelector} from "react-redux";
+import {RootState} from "../../../modules";
+import {changeWriteField, initializeWrite} from "../../../modules/write/writeAction";
 
 export const EditorForm = () => {
+    const dispatch = useDispatch()
+    // const { title, body } = useSelector((write: WriteState)=>({
+    //     title: write.title,
+    //     body: write.body
+    // }))
+    const { title, body } = useSelector((state:RootState)=>({
+        title: state.write.title,
+        body: state.write.body
+    }))
+    const onChangeField = useCallback(payload => dispatch(changeWriteField(payload)), [dispatch])
+    useEffect(() => {
+        return () => {
+            dispatch(initializeWrite())
+        }
+    }, [dispatch])
     const QuillRef = useRef<ReactQuill>();
     const [contents, setContents] = useState("");
+    useEffect(() => {
+        console.log('contents:', contents)
+    },[contents])
     const imageHandler = () => {
         // 파일을 업로드 하기 위한 input 태그 생성
         const input = document.createElement("input");
@@ -88,9 +108,20 @@ export const EditorForm = () => {
         'link', 'image',
         'align', 'color', 'background',
     ]
+    const onChangeTitle = (event: ChangeEvent<HTMLInputElement>) => {
+        onChangeField({key: 'title', value: event.target.value})
+    }
+    const onChangeContent = (
+        content: string,
+        delta: any,
+        source: any,
+        editor: any) => {
+        setContents(content)
+        onChangeField({key: 'body', value: editor.getText()})
+    }
     return(
         <StyledEditorBlock>
-            <EditorInput placeholder="제목을 입력하세요"/>
+            <EditorInput placeholder="제목을 입력하세요" onChange={onChangeTitle} value={title}/>
             <QuillWrapper>
                 <ReactQuill
                     ref={(element) => {
@@ -99,7 +130,7 @@ export const EditorForm = () => {
                         }
                     }}
                     value={contents}
-                    onChange={setContents}
+                    onChange={onChangeContent}
                     modules={modules}
                     theme="snow"
                     placeholder="내용을 입력해주세요."

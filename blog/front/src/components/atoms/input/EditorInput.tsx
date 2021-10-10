@@ -1,11 +1,13 @@
-import React from "react";
+import React, {ChangeEvent} from "react";
 import styled from "styled-components";
 import palette from "../../../libs/styles/palette";
 interface IEditorInputProps{
     placeholder: string
+    onChange: (event: ChangeEvent<HTMLInputElement>) => void
+    value: string
 }
-export const EditorInput = ({placeholder}:IEditorInputProps) => {
-    return <StyledEditorInput placeholder={placeholder}/>
+export const EditorInput = ({placeholder, onChange, value}:IEditorInputProps) => {
+    return <StyledEditorInput placeholder={placeholder} onChange={onChange} value={value}/>
 }
 const StyledEditorInput = styled.input`
   font-size: 3rem;
