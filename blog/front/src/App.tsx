@@ -7,9 +7,13 @@ import {WritePage} from "./pages/write";
 import {PostPage} from "./pages/post";
 import {TempPage} from "./pages/temp";
 import {TempPostsPage} from "./pages/temp/TempPostsPage";
+import {Helmet} from "react-helmet-async";
 
 const App = () => {
     return<>
+        <Helmet>
+            <title>REACTERS</title>
+        </Helmet>
         <Route component={TempPage} path="/temp" />
         <Route component={TempPostsPage} path='/tempPosts'/>
         <Route component={PostListPage} path={['/@:username', '/']} exact />

@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from "react-router-dom";
 import {createStore} from "./modules";
 import {Provider} from "react-redux";
+import {HelmetProvider} from 'react-helmet-async'
 import {checkAction, tempSetUser} from "./modules/user/userAction";
 const store = createStore()
 function loadUser(){
@@ -23,7 +24,9 @@ loadUser()
 ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>
-            <App />
+            <HelmetProvider>
+                <App />
+            </HelmetProvider>
         </BrowserRouter>
     </Provider>
     ,
