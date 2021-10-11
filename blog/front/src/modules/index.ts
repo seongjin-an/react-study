@@ -7,25 +7,29 @@ import loading from './loading/loadingReducer'
 import user from './user/userReducer'
 import write from './write/writeReducer'
 import post from "./post/postReducer";
+import posts from "./posts/postsReducer";
 
 import authSaga from "./auth/authSaga";
 import userSaga from "./user/userSaga";
 import writeSaga from "./write/writeSaga";
 import postSaga from "./post/postSaga";
+import postsSaga from "./posts/postsSaga";
 
 const rootReducer:Reducer = combineReducers({
     auth,
     loading,
     user,
     write,
-    post
+    post,
+    posts
 })
 export const rootSaga = function*(){
     yield all([
         fork(authSaga),
         fork(userSaga),
         fork(writeSaga),
-        fork(postSaga)
+        fork(postSaga),
+        fork(postsSaga)
     ])
 }
 export type RootState = ReturnType<typeof rootReducer>

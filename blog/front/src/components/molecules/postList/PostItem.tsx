@@ -1,15 +1,22 @@
 import React from "react";
 import styled from "styled-components";
+import {Link} from 'react-router-dom'
 import palette from "../../../libs/styles/palette";
 import {PostSubInfo, Tags} from "../common";
-
-export const PostItem = () => {
+import {IPost} from "../../../modules/posts/postsReducer";
+interface IPostItemProps{
+    post: IPost
+}
+export const PostItem = ({post}: IPostItemProps) => {
+    const { publishedDate, user, tags, title, body, _id } = post
     return(
         <StyledPostItemBlock>
-            <h2>제목</h2>
-            <PostSubInfo user="username" publishedDate={new Date().toString()} hasMarginTop={false}/>
-            <Tags tags={['tag1', 'tag2', 'tag3']}/>
-            <p>포스트 내용의 일부분..</p>
+            <h2>
+                <Link to={`/@${user?.username}/${_id}`}>{title}</Link>
+            </h2>
+            <PostSubInfo user={user?.username} publishedDate={publishedDate} hasMarginTop={false}/>
+            <Tags tags={tags}/>
+            <p>{body}</p>
         </StyledPostItemBlock>
     )
 }

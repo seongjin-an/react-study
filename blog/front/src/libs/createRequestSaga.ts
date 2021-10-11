@@ -7,15 +7,18 @@ export default function createRequestSaga(type: string, request:any){
     const SUCCESS = `${type}_SUCCESS`
     const FAILURE = `${type}_FAILURE`
     return function*(action:PayloadAction){
+        console.log('createRequestSaga action:', action)
         yield put(startLoading(type))
         try{
             const response:AxiosResponse = yield call(request, action.payload)
-            console.log('response:', response)
+            console.log('createRequestSaga response:', response)
             yield put({
                 type: SUCCESS,
-                payload: response.data
+                payload: response.data,
+                meta: response
             })
         }catch(error){
+            console.log('createRequestSaga error:', error)
             yield put({
                 type: FAILURE,
                 payload: error,

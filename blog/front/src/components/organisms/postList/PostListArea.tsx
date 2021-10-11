@@ -1,22 +1,56 @@
-import React from "react";
+import React, {ComponentType, useEffect} from "react";
 import styled from "styled-components";
 import {Responsive} from "../common";
-import palette from "../../../libs/styles/palette";
 import {CommonButton} from "../../atoms/common";
 import {PostItem} from "../../molecules/postList";
-
-export const PostListArea = () => {
+import {RouteComponentProps, withRouter} from "react-router";
+import {useDispatch, useSelector} from "react-redux";
+import {RootState} from "../../../modules";
+import qs from "qs";
+import {listPostsAction} from "../../../modules/posts/postsAction";
+import {IPost} from "../../../modules/posts/postsReducer";
+interface IMatchProps {
+    username: string
+}
+interface IPostListArea extends RouteComponentProps<IMatchProps>{
+    
+}
+export const PostListArea = ({ location, match }:IPostListArea) => {
+    const dispatch = useDispatch()
+    const { posts, error, loading, user } = useSelector((state:RootState) => ({
+        posts: state.posts.posts,
+        error: state.posts.error,
+        loading: state.loading["posts/LIST_POSTS"],
+        user: state.user.user
+    }))
+    useEffect(() => {
+        const { username } = match.params
+        const { tag, page } = qs.parse(location.search, {
+            ignoreQueryPrefix: true
+        })
+        dispatch(listPostsAction({tag, username, page}))
+    }, [dispatch, location.search])
+    if(error){
+        return <StyledPostListBLock>에러가 발생했습니다!!.</StyledPostListBLock>
+    }
     return(
         <StyledPostListBLock>
             <StyledWritePostButtonWrapper>
-                <CommonButton cyan to="/write">
-                    새 글 작성하기
-                </CommonButton>
+                {user && (
+                    <CommonButton cyan to="/write">
+                        새 글 작성하기
+                    </CommonButton>
+                )}
             </StyledWritePostButtonWrapper>
-            <PostItem/>
+            {!loading && posts && posts.length>0 && (
+                <div>
+                    {posts.map((post: IPost, index:number) => <PostItem post={post} key={index}/>)}
+                </div>
+            )}
         </StyledPostListBLock>
     )
 }
+export default withRouter<IPostListArea, ComponentType<IPostListArea>>(PostListArea)
 const StyledPostListBLock = styled(Responsive)`
   margin-top: 3rem;
 `

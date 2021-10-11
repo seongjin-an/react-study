@@ -7,6 +7,7 @@ type TCommonButton = {
     fullWidth?: boolean
     cyan?: boolean
     to?: string
+    disabled?: boolean
 }
 export const CommonButton: React.FC<ButtonProps & TCommonButton> =
     ({style, children, onClick, to, ...rest}) => {
@@ -55,6 +56,12 @@ const buttonStyle = css<CommonButtonProps>`
       background: ${palette.cyan[4]};
     }
   `}
+  
+  &:disabled{
+    background: ${palette.gray[3]};
+    color: ${palette.gray[5]};
+    cursor: not-allowed;
+  }
 `
 const StyledButton = styled.button<CommonButtonProps>`
     ${buttonStyle}
