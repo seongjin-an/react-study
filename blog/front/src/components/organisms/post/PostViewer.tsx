@@ -9,13 +9,14 @@ import {RootState} from "../../../modules";
 import {readPostAction, unloadPostAction} from "../../../modules/post/postAction";
 import {PostActionButtons} from "../../molecules/post";
 import {setOriginalPost} from "../../../modules/write/writeAction";
+import {removePost} from "../../../libs/api/posts";
 interface IMatchProps {
     postId: string
 }
 interface IPostViewerProps extends RouteComponentProps<IMatchProps>{
 
 }
-export const PostViewer = ({match, history}: IPostViewerProps) => {
+const PostViewer = ({match, history}: IPostViewerProps) => {
     const {postId} = match.params
     const dispatch = useDispatch()
     const { post, error, loading, user } = useSelector((state:RootState) => ({
@@ -34,7 +35,14 @@ export const PostViewer = ({match, history}: IPostViewerProps) => {
         dispatch(setOriginalPost(post))
         history.push('/write')
     }
-
+    const onRemove = async () => {
+        try {
+            await removePost(postId)
+            history.push('/')
+        }catch(error){
+            console.log(error)
+        }
+    }
     const ownPost = (user && user._id) === (post && post.user._id)
     if(error){
         if(error.response && error.response.status === 404){
@@ -55,7 +63,7 @@ export const PostViewer = ({match, history}: IPostViewerProps) => {
                     <Tags tags={post.tags}/>
                 </StyledPostHead>
             </StyledPostViewerBlock>
-            {ownPost && <PostActionButtons onEdit={onEdit}/>}
+            {ownPost && <PostActionButtons onEdit={onEdit} onRemove={onRemove}/>}
         </>
     )
 }

@@ -15,3 +15,5 @@ export const listPosts = ({ page, username, tag }: IPosts) => {
 export const updatePost = ({ id, title, body, tags }: {id: string, title: string, body: string, tags: string[]}) => {
     return client.patch(`/api/posts/${id}`, {title, body, tags})
 }
+
+export const removePost = (id: string) => client.delete(`/api/posts/${id}`)
