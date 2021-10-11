@@ -11,3 +11,7 @@ export const listPosts = ({ page, username, tag }: IPosts) => {
     const querystring = qs.stringify({ page, username, tag })
     return client.get(`/api/posts?${querystring}`)
 }
+
+export const updatePost = ({ id, title, body, tags }: {id: string, title: string, body: string, tags: string[]}) => {
+    return client.patch(`/api/posts/${id}`, {title, body, tags})
+}

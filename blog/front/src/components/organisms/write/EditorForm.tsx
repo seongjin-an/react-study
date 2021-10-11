@@ -27,7 +27,7 @@ export const EditorForm = () => {
         }
     }, [dispatch])
     const QuillRef = useRef<ReactQuill>();
-    const [contents, setContents] = useState("");
+    const [contents, setContents] = useState(body || "");
     useEffect(() => {
         console.log('contents:', contents)
     },[contents])
