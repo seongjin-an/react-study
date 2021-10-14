@@ -8,6 +8,7 @@ import {createStore} from "../modules";
 import {Provider} from "react-redux";
 import toJson from "enzyme-to-json";
 import "@testing-library/jest-dom/extend-expect";
+import {fireEvent} from "@testing-library/react";
 
 let store: Store
 const setup = (WrappedComponent: React.ComponentProps<any>, props={}) => {
@@ -37,10 +38,16 @@ describe('auth component', () => {
         const {wrapper} = setup(LoginPage)
         const header=wrapper.find('.logo-area')
         expect(header.text()).toBe('REACTERS')
-        wrapper.find('AuthForm').find('input[type="password"]')
         const loginButton = wrapper.find('AuthForm').find('CommonButton')
         expect(loginButton.text()).toBe('로그인')
-        console.log('button...:', toJson(loginButton))
         expect(loginButton.text()).not.toBe('회원가입')
+    })
+    it('should login', () => {
+        const {wrapper} = setup(LoginPage)
+        wrapper.find('input[name="username"]')
+            .simulate('change', {target: {value: 'imsi11'}})
+        wrapper.find('input[name="password"]')
+            .simulate('change', {target: {value: '123411'}})
+        wrapper.find('button').simulate('click')
     })
 })
