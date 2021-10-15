@@ -8,7 +8,6 @@ import {createStore} from "../modules";
 import {Provider} from "react-redux";
 import toJson from "enzyme-to-json";
 import "@testing-library/jest-dom/extend-expect";
-import {fireEvent} from "@testing-library/react";
 
 let store: Store
 const setup = (WrappedComponent: React.ComponentProps<any>, props={}) => {

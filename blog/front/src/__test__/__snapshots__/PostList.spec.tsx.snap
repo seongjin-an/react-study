@@ -1,0 +1,215 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`post list component should match snapshot 1`] = `
+<Provider
+  store={
+    Object {
+      "@@observable": [Function],
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <BrowserRouter>
+    <Router
+      history={
+        Object {
+          "action": "POP",
+          "block": [Function],
+          "createHref": [Function],
+          "go": [Function],
+          "goBack": [Function],
+          "goForward": [Function],
+          "length": 1,
+          "listen": [Function],
+          "location": Object {
+            "hash": "",
+            "pathname": "/",
+            "search": "",
+            "state": undefined,
+          },
+          "push": [Function],
+          "replace": [Function],
+        }
+      }
+    >
+      <PostListPage>
+        <PostListTemplate>
+          <Header>
+            <styled.div>
+              <div
+                className="sc-pGacB dkCZpN"
+              >
+                <Styled(Responsive)>
+                  <Responsive
+                    className="sc-jrAFXE jHCWrv"
+                  >
+                    <styled.div
+                      className="sc-jrAFXE jHCWrv"
+                    >
+                      <div
+                        className="sc-fubCzh JinAF sc-jrAFXE jHCWrv"
+                      >
+                        <Link
+                          className="logo"
+                          to="/"
+                        >
+                          <LinkAnchor
+                            className="logo"
+                            href="/"
+                            navigate={[Function]}
+                          >
+                            <a
+                              className="logo"
+                              href="/"
+                              onClick={[Function]}
+                            >
+                              REACTERS
+                            </a>
+                          </LinkAnchor>
+                        </Link>
+                        <div
+                          className="right"
+                        >
+                          <CommonButton
+                            to="/login"
+                          >
+                            <Styled(Link)
+                              to="/login"
+                            >
+                              <Link
+                                className="sc-eCstlR hwYBHH"
+                                to="/login"
+                              >
+                                <LinkAnchor
+                                  className="sc-eCstlR hwYBHH"
+                                  href="/login"
+                                  navigate={[Function]}
+                                >
+                                  <a
+                                    className="sc-eCstlR hwYBHH"
+                                    href="/login"
+                                    onClick={[Function]}
+                                  >
+                                    로그인
+                                  </a>
+                                </LinkAnchor>
+                              </Link>
+                            </Styled(Link)>
+                          </CommonButton>
+                        </div>
+                      </div>
+                    </styled.div>
+                  </Responsive>
+                </Styled(Responsive)>
+              </div>
+            </styled.div>
+          </Header>
+          <withRouter(PostListArea)>
+            <PostListArea
+              history={
+                Object {
+                  "action": "POP",
+                  "block": [Function],
+                  "createHref": [Function],
+                  "go": [Function],
+                  "goBack": [Function],
+                  "goForward": [Function],
+                  "length": 1,
+                  "listen": [Function],
+                  "location": Object {
+                    "hash": "",
+                    "pathname": "/",
+                    "search": "",
+                    "state": undefined,
+                  },
+                  "push": [Function],
+                  "replace": [Function],
+                }
+              }
+              location={
+                Object {
+                  "hash": "",
+                  "pathname": "/",
+                  "search": "",
+                  "state": undefined,
+                }
+              }
+              match={
+                Object {
+                  "isExact": true,
+                  "params": Object {},
+                  "path": "/",
+                  "url": "/",
+                }
+              }
+            >
+              <Styled(Responsive)>
+                <Responsive
+                  className="sc-fFucqa emSBcX"
+                >
+                  <styled.div
+                    className="sc-fFucqa emSBcX"
+                  >
+                    <div
+                      className="sc-fubCzh JinAF sc-fFucqa emSBcX"
+                    >
+                      <styled.div>
+                        <div
+                          className="sc-bkzYnD fDriXL"
+                        />
+                      </styled.div>
+                    </div>
+                  </styled.div>
+                </Responsive>
+              </Styled(Responsive)>
+            </PostListArea>
+          </withRouter(PostListArea)>
+          <withRouter(Pagination)>
+            <Pagination
+              history={
+                Object {
+                  "action": "POP",
+                  "block": [Function],
+                  "createHref": [Function],
+                  "go": [Function],
+                  "goBack": [Function],
+                  "goForward": [Function],
+                  "length": 1,
+                  "listen": [Function],
+                  "location": Object {
+                    "hash": "",
+                    "pathname": "/",
+                    "search": "",
+                    "state": undefined,
+                  },
+                  "push": [Function],
+                  "replace": [Function],
+                }
+              }
+              location={
+                Object {
+                  "hash": "",
+                  "pathname": "/",
+                  "search": "",
+                  "state": undefined,
+                }
+              }
+              match={
+                Object {
+                  "isExact": true,
+                  "params": Object {},
+                  "path": "/",
+                  "url": "/",
+                }
+              }
+            />
+          </withRouter(Pagination)>
+        </PostListTemplate>
+      </PostListPage>
+    </Router>
+  </BrowserRouter>
+</Provider>
+`;
