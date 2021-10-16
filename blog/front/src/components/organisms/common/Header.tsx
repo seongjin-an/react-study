@@ -21,7 +21,7 @@ export const Header: React.FC<{
         <HeaderBlock>
             <Wrapper>
                 <Link to="/" className="logo">
-                    REACTERS
+                    <span className={'post-list-header'}>REACTERS</span>
                 </Link>
                 {user ? (
                     <div className="right">

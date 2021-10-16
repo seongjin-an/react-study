@@ -66,7 +66,11 @@ exports[`post list component should match snapshot 1`] = `
                               href="/"
                               onClick={[Function]}
                             >
-                              REACTERS
+                              <span
+                                className="post-list-header"
+                              >
+                                REACTERS
+                              </span>
                             </a>
                           </LinkAnchor>
                         </Link>

@@ -7,6 +7,7 @@ import {createStore} from "../modules";
 import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
 import {PostListPage} from "../pages/postList";
 import toJson from "enzyme-to-json";
+import "@testing-library/jest-dom/extend-expect";
 
 let store:Store
 const setup = (WrappedComponent: React.ComponentProps<any>, props={}) => {
@@ -33,8 +34,9 @@ describe('post list component', () => {
     })
     it('should render', () => {
         const { wrapper } = setup(PostListPage)
-        const header=wrapper.find('.logo')
+        const header=wrapper.find('.post-list-header')
         expect(header.text()).toBe('REACTERS')
+        const writeButton = wrapper.find('CommonButton')
 
     })
 })
