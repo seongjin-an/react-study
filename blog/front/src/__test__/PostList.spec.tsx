@@ -8,6 +8,7 @@ import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
 import {PostListPage} from "../pages/postList";
 import toJson from "enzyme-to-json";
 import "@testing-library/jest-dom/extend-expect";
+import {PostListArea} from "../components/organisms/postList";
 
 let store:Store
 const setup = (WrappedComponent: React.ComponentProps<any>, props={}) => {
@@ -22,21 +23,24 @@ const setup = (WrappedComponent: React.ComponentProps<any>, props={}) => {
         wrapper
     }
 }
-
 describe('post list component', () => {
     beforeEach(() => {
-        store = createStore()
+        store = createStore();
         configure({ adapter: new Adapter() });
     })
     it('should match snapshot', () => {
-        const {wrapper} = setup(PostListPage)
-        expect(toJson(wrapper)).toMatchSnapshot()
+        const {wrapper} = setup(PostListPage);
+        expect(toJson(wrapper)).toMatchSnapshot();
     })
     it('should render', () => {
-        const { wrapper } = setup(PostListPage)
-        const header=wrapper.find('.post-list-header')
+        const { wrapper } = setup(PostListPage);
+        const header=wrapper.find('.post-list-header');
         expect(header.text()).toBe('REACTERS')
-        const writeButton = wrapper.find('CommonButton')
+        const writeButton = wrapper.find("CommonButton")
+        expect(writeButton.text()).toBe('로그인')
+    })
+    it('should render post list area', () => {
+        const { wrapper } = setup(PostListArea)
 
     })
 })
