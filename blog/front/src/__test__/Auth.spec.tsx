@@ -10,11 +10,11 @@ import "@testing-library/jest-dom/extend-expect";
 
 describe('Auth Component', () => {
     let store: Store
-    beforeEach(() => {
-        store = createStore()
+    beforeEach(async () => {
+        store = await createStore()
     });
     it('initialize', async () => {
-        const { getByText, getAllByText } = render(
+        const { getByText, getAllByText } = await render(
             <Provider store={store}>
                 <BrowserRouter>
                     <LoginPage />

@@ -9,6 +9,7 @@ import {PostListPage} from "../pages/postList";
 import toJson from "enzyme-to-json";
 import "@testing-library/jest-dom/extend-expect";
 import {PostListArea} from "../components/organisms/postList";
+import {PostItem} from "../components/molecules/postList";
 
 let store:Store
 const setup = (WrappedComponent: React.ComponentProps<any>, props={}) => {
@@ -24,23 +25,47 @@ const setup = (WrappedComponent: React.ComponentProps<any>, props={}) => {
     }
 }
 describe('post list component', () => {
-    beforeEach(() => {
-        store = createStore();
+    beforeEach(async () => {
+        store = await createStore();
         configure({ adapter: new Adapter() });
     })
-    it('should match snapshot', () => {
-        const {wrapper} = setup(PostListPage);
+    it('should match snapshot', async () => {
+        const props = {
+            location:{
+                search: ''
+            },
+            match:{
+                params: {
+                    username: ''
+                }
+            }
+        }
+        const { wrapper } = await setup(PostListPage, props)
         expect(toJson(wrapper)).toMatchSnapshot();
     })
-    it('should render', () => {
-        const { wrapper } = setup(PostListPage);
+    it('should render', async () => {
+        const { wrapper } = await setup(PostListPage);
         const header=wrapper.find('.post-list-header');
         expect(header.text()).toBe('REACTERS')
         const writeButton = wrapper.find("CommonButton")
         expect(writeButton.text()).toBe('로그인')
     })
-    it('should render post list area', () => {
-        const { wrapper } = setup(PostListArea)
+    it('should render post list area', async () => {
+        const props = {
+            location:{
+                search: ''
+            },
+            match:{
+                params: {
+                    username: ''
+                }
+            }
+        }
 
+        const { wrapper } = await setup(PostListArea, props)
+        const postItems = wrapper.find('div[className="real-post-list"]')
+        console.log('real-post-list:', postItems)
+        // expect(postItems).toHaveLength(3)
+        // expect(postItems.length).toEqual(3)
     })
 })

@@ -30,6 +30,11 @@ export const PostListArea = ({ location, match }:IPostListArea) => {
         })
         dispatch(listPostsAction({tag, username, page}))
     }, [dispatch, location.search])
+    useEffect(() =>{
+        if(posts){
+            console.log('real posts:', posts)
+        }
+    }, [posts])
     if(error){
         return <StyledPostListBLock>에러가 발생했습니다!!.</StyledPostListBLock>
     }
@@ -43,7 +48,7 @@ export const PostListArea = ({ location, match }:IPostListArea) => {
                 )}
             </StyledWritePostButtonWrapper>
             {!loading && posts && posts.length>0 && (
-                <div>
+                <div className="real-post-list">
                     {posts.map((post: IPost, index:number) => <PostItem post={post} key={index}/>)}
                 </div>
             )}

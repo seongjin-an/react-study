@@ -35,7 +35,20 @@ exports[`post list component should match snapshot 1`] = `
         }
       }
     >
-      <PostListPage>
+      <PostListPage
+        location={
+          Object {
+            "search": "",
+          }
+        }
+        match={
+          Object {
+            "params": Object {
+              "username": "",
+            },
+          }
+        }
+      >
         <PostListTemplate>
           <Header>
             <styled.div>

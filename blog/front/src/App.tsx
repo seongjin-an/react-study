@@ -8,6 +8,7 @@ import {PostPage} from "./pages/post";
 import {TempPage} from "./pages/temp";
 import {TempPostsPage} from "./pages/temp/TempPostsPage";
 import {Helmet} from "react-helmet-async";
+import ImsiCompo from "./components/ImsiCompo";
 
 const App = () => {
     return<>
@@ -15,6 +16,7 @@ const App = () => {
             <title>REACTERS</title>
         </Helmet>
         <Route component={TempPage} path="/temp" />
+        <Route component={ImsiCompo} path="/imsi" />
         <Route component={TempPostsPage} path='/tempPosts'/>
         <Route component={PostListPage} path={['/@:username', '/']} exact />
         <Route component={LoginPage} path="/login"/>
