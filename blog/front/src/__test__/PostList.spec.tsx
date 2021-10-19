@@ -1,15 +1,18 @@
 import React from "react";
+import {applyMiddleware, createStore} from 'redux'
 import {Store} from "@reduxjs/toolkit";
 import {configure, mount} from "enzyme";
 import {Provider} from "react-redux";
 import {BrowserRouter} from "react-router-dom";
-import {createStore} from "../modules";
+// import {createStore} from "../modules";
 import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
 import {PostListPage} from "../pages/postList";
 import toJson from "enzyme-to-json";
 import "@testing-library/jest-dom/extend-expect";
 import {PostListArea} from "../components/organisms/postList";
 import {PostItem} from "../components/molecules/postList";
+import rootReducer, {rootSaga} from "../modules";
+import createSagaMiddleware from "@redux-saga/core";
 
 let store:Store
 const setup = (WrappedComponent: React.ComponentProps<any>, props={}) => {
@@ -26,8 +29,11 @@ const setup = (WrappedComponent: React.ComponentProps<any>, props={}) => {
 }
 describe('post list component', () => {
     beforeEach(async () => {
-        store = await createStore();
+        // store = await createStore();
         configure({ adapter: new Adapter() });
+        const sagaMiddleware = createSagaMiddleware()
+        store = createStore(rootReducer, applyMiddleware(sagaMiddleware))
+        sagaMiddleware.run(rootSaga)
     })
     it('should match snapshot', async () => {
         const props = {

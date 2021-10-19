@@ -15,7 +15,7 @@ import writeSaga from "./write/writeSaga";
 import postSaga from "./post/postSaga";
 import postsSaga from "./posts/postsSaga";
 
-const rootReducer:Reducer = combineReducers({
+export const rootReducer:Reducer = combineReducers({
     auth,
     loading,
     user,

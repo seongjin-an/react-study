@@ -53,17 +53,17 @@ exports[`post list component should match snapshot 1`] = `
           <Header>
             <styled.div>
               <div
-                className="sc-pGacB dkCZpN"
+                className="sc-eCstlR eosEnN"
               >
                 <Styled(Responsive)>
                   <Responsive
-                    className="sc-jrAFXE jHCWrv"
+                    className="sc-jSgvzq gnxYRS"
                   >
                     <styled.div
-                      className="sc-jrAFXE jHCWrv"
+                      className="sc-jSgvzq gnxYRS"
                     >
                       <div
-                        className="sc-fubCzh JinAF sc-jrAFXE jHCWrv"
+                        className="sc-bdfBQB cPQyqM sc-jSgvzq gnxYRS"
                       >
                         <Link
                           className="logo"
@@ -97,16 +97,16 @@ exports[`post list component should match snapshot 1`] = `
                               to="/login"
                             >
                               <Link
-                                className="sc-eCstlR hwYBHH"
+                                className="sc-dlfnuX gwwbGh"
                                 to="/login"
                               >
                                 <LinkAnchor
-                                  className="sc-eCstlR hwYBHH"
+                                  className="sc-dlfnuX gwwbGh"
                                   href="/login"
                                   navigate={[Function]}
                                 >
                                   <a
-                                    className="sc-eCstlR hwYBHH"
+                                    className="sc-dlfnuX gwwbGh"
                                     href="/login"
                                     onClick={[Function]}
                                   >
@@ -165,17 +165,17 @@ exports[`post list component should match snapshot 1`] = `
             >
               <Styled(Responsive)>
                 <Responsive
-                  className="sc-fFucqa emSBcX"
+                  className="sc-dQoVA eLMyWI"
                 >
                   <styled.div
-                    className="sc-fFucqa emSBcX"
+                    className="sc-dQoVA eLMyWI"
                   >
                     <div
-                      className="sc-fubCzh JinAF sc-fFucqa emSBcX"
+                      className="sc-bdfBQB cPQyqM sc-dQoVA eLMyWI"
                     >
                       <styled.div>
                         <div
-                          className="sc-bkzYnD fDriXL"
+                          className="sc-bqyKOL fNwuQZ"
                         />
                       </styled.div>
                     </div>
