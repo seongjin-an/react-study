@@ -1,9 +1,32 @@
 import createRequestSaga from "../../libs/createRequestSaga";
-import {CHECK, CHECK_FAILURE, CHECK_REQUEST, LOGOUT} from "./userType";
+import {CHECK, CHECK_FAILURE, CHECK_REQUEST, CHECK_SUCCESS, LOGOUT} from "./userType";
 import {check, logout} from "../../libs/api/auth";
-import {all, call, fork, takeLatest} from "@redux-saga/core/effects";
+import {all, call, fork, put, takeLatest} from "@redux-saga/core/effects";
+import {PayloadAction} from "@reduxjs/toolkit";
+import {finishLoading, startLoading} from "../loading/loadingAction";
+import {AxiosResponse} from "axios";
 
-const fetchCheck = createRequestSaga(CHECK, check)
+const fetchCheck = function*(action:PayloadAction){
+    console.log('createRequestSaga action:', action)
+    yield put(startLoading("user/CHECK"))
+    try{
+        const response:AxiosResponse = yield call(check)
+        console.log('createRequestSaga response:', response)
+        yield put({
+            type: CHECK_SUCCESS,
+            payload: response.data,
+            meta: response
+        })
+    }catch(error){
+        console.log('createRequestSaga error:', error)
+        yield put({
+            type: CHECK_FAILURE,
+            payload: error,
+            error: true
+        })
+    }
+    yield put(finishLoading("user/CHECK"))
+}
 
 const fetchCheckFailure = function*(){
     try{

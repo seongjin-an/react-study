@@ -9,7 +9,8 @@ export const readPost = (id:string) => client.get(`/api/posts/${id}`)
 
 export const listPosts = ({ page, username, tag }: IPosts) => {
     const querystring = qs.stringify({ page, username, tag })
-    return client.get(`/api/posts?${querystring}`)
+    // return client.get(`/api/posts?${querystring}`)
+    return client.get(`/api/posts?page=${page}&username=${username}&tag=${tag}`)
 }
 
 export const updatePost = ({ id, title, body, tags }: {id: string, title: string, body: string, tags: string[]}) => {

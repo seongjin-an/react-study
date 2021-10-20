@@ -9,6 +9,7 @@ import {RootState} from "../../../modules";
 import qs from "qs";
 import {listPostsAction} from "../../../modules/posts/postsAction";
 import {IPost} from "../../../modules/posts/postsReducer";
+import {IPosts} from "../../../modules/posts/postsType";
 interface IMatchProps {
     username: string
 }
@@ -28,13 +29,8 @@ export const PostListArea = ({ location, match }:IPostListArea) => {
         const { tag, page } = qs.parse(location.search, {
             ignoreQueryPrefix: true
         })
-        dispatch(listPostsAction({tag, username, page}))
-    }, [dispatch, location.search])
-    useEffect(() =>{
-        if(posts){
-            console.log('real posts:', posts)
-        }
-    }, [posts])
+        dispatch(listPostsAction({tag: tag||'', username: '', page: page||1} as IPosts))
+    }, [location.search])
     if(error){
         return <StyledPostListBLock>에러가 발생했습니다!!.</StyledPostListBLock>
     }
