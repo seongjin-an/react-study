@@ -1,7 +1,7 @@
 import React from "react";
-// import {applyMiddleware} from 'redux'
+// import {applyMiddleware, createStore} from 'redux'
 import {createStore} from "../modules";
-import {Store} from "@reduxjs/toolkit";
+import {configureStore, Store} from "@reduxjs/toolkit";
 import {configure, mount} from "enzyme";
 import {Provider} from "react-redux";
 import {BrowserRouter} from "react-router-dom";
@@ -29,10 +29,15 @@ const setup = (WrappedComponent: React.ComponentProps<any>, props={}) => {
 }
 describe('post list component', () => {
     beforeEach(async () => {
-        store = await createStore();
-        // const sagaMiddleware = createSagaMiddleware()
-        // store = createStore(rootReducer, applyMiddleware(sagaMiddleware))
-        // sagaMiddleware.run(rootSaga)
+        // store = createStore()
+        const sagaMiddleware = createSagaMiddleware();
+        const _store = configureStore({
+            reducer: rootReducer,
+            middleware: [sagaMiddleware],
+            devTools: process.env.NODE_ENV !== "production",
+        })
+        sagaMiddleware.run(rootSaga);
+        store = _store
         configure({ adapter: new Adapter() });
     })
     it('should match snapshot', async () => {
@@ -46,11 +51,21 @@ describe('post list component', () => {
                 }
             }
         }
-        const { wrapper } = await setup(PostListPage, props)
+        const { wrapper } = await setup(PostListPage)
         expect(toJson(wrapper)).toMatchSnapshot();
     })
     it('should render', async () => {
-        const { wrapper } = await setup(PostListPage);
+        const props = {
+            location:{
+                search: ''
+            },
+            match:{
+                params: {
+                    username: ''
+                }
+            }
+        }
+        const { wrapper } = await setup(PostListPage, props);
         const header=wrapper.find('.post-list-header');
         expect(header.text()).toBe('REACTERS')
         const writeButton = wrapper.find("CommonButton")
