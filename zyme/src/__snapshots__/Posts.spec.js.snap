@@ -4,8 +4,9 @@ exports[`enzyme saga test should match snapshot 1`] = `
 <Provider
   store={
     Object {
-      "@@observable": [Function],
+      "clearActions": [Function],
       "dispatch": [Function],
+      "getActions": [Function],
       "getState": [Function],
       "replaceReducer": [Function],
       "subscribe": [Function],
@@ -13,7 +14,24 @@ exports[`enzyme saga test should match snapshot 1`] = `
   }
 >
   <Posts>
-    <div />
+    <div>
+      <div
+        key="0"
+      >
+        <div>
+          11
+        </div>
+        <div>
+          11
+        </div>
+        <div>
+          hello
+        </div>
+        <div>
+          world
+        </div>
+      </div>
+    </div>
   </Posts>
 </Provider>
 `;
