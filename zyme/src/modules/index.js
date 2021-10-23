@@ -5,11 +5,11 @@ import {all, fork} from "@redux-saga/core/effects";
 import createSagaMiddleware from "@redux-saga/core";
 import {configureStore} from "@reduxjs/toolkit";
 
-const rootReducer = combineReducers({
+export const rootReducer = combineReducers({
     post
 })
 
-const rootSaga = function*(){
+export const rootSaga = function*(){
     yield all([
         fork(postSaga)
     ])
