@@ -51,4 +51,12 @@ describe('enzyme saga test', () => {
         const { wrapper } = setup2(Posts)
         expect(toJson(wrapper)).toMatchSnapshot()
    })
+    it('should store', ()=>{
+        store = createStore()
+        const {wrapper} = setup2(Posts)
+        console.log('store.getState()...:', store.getState())
+    })
+    it('should render', () => {
+        console.log('store.getState():', store.getState().post.list);
+    })
 })
