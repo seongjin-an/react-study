@@ -4,12 +4,11 @@ import {Provider} from "react-redux";
 import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
 import Posts from "./Posts";
 import toJson from "enzyme-to-json";
-import createSagaMiddleware from "@redux-saga/core";
-// import {render, screen} from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect"
 import configureMockStore from 'redux-mock-store'
 import {createStore, rootReducer, rootSaga} from "./modules";
-import {compose, configureStore} from "@reduxjs/toolkit";
+import * as actions from "./modules/post/postAction";
+
 
 let store
 const setup2 = (WrappedComponent, props={}) => {
@@ -21,8 +20,8 @@ const setup2 = (WrappedComponent, props={}) => {
     return {wrapper}
 }
 
-const sagaMiddleware = createSagaMiddleware()
-const mockStore = configureMockStore([sagaMiddleware])
+const mockStore = configureMockStore()
+store = mockStore()
 describe('enzyme saga test', () => {
 
     beforeEach(() => {
@@ -56,7 +55,23 @@ describe('enzyme saga test', () => {
         const {wrapper} = setup2(Posts)
         console.log('store.getState()...:', store.getState())
     })
-    it('should render', () => {
-        console.log('store.getState():', store.getState().post.list);
-    })
+    it('should match actions', () => {
+        const expectedActions = {
+            readPostRequest:{
+                'payload': undefined,
+                'type': 'post/READ_POST_REQUEST',
+            },
+            readPostSuccess:{
+                'payload': [{userId:1, id:1, title: 'hello', body: 'world'}],
+                'type': 'post/READ_POST_SUCCESS'
+            },
+            readPostFailure:{
+                'payload': undefined,
+                'type': 'post/READ_POST_FAILURE'
+            }
+        };
+        expect(actions.readPostRequest()).toEqual(expectedActions.readPostRequest)
+        expect(actions.readPostSuccess([{userId:1,id:1,title:'hello',body:'world'}])).toEqual(expectedActions.readPostSuccess)
+        expect(actions.readPostFailure()).toEqual(expectedActions.readPostFailure)
+    });
 })
