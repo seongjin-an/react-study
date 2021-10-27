@@ -9,7 +9,8 @@ import configureMockStore from 'redux-mock-store'
 import * as actions from "./modules/post/postAction";
 import * as redux from 'react-redux'
 import {READ_POST_REQUEST} from "./modules/post/postTypes";
-
+import axios from "axios";
+import * as api from "./modules/post/postApi";
 
 let store
 const setup2 = (WrappedComponent, props={}) => {
@@ -23,30 +24,12 @@ const setup2 = (WrappedComponent, props={}) => {
 
 const mockStore = configureMockStore()
 store = mockStore()
+jest.mock('axios')
 describe('enzyme saga test', () => {
     let spyOnUseSelector;
     let spyOnUseDispatch;
     let mockDispatch;
     beforeEach(() => {
-
-
-        // Mock useSelector hook
-        spyOnUseSelector = jest.spyOn(redux, 'useSelector');
-        spyOnUseSelector.mockReturnValue({
-            post: {
-                list: [
-                    {"userId": 11, "id": 11, "title": 'hello', "body": 'world'}
-                ]
-            }
-        });
-        //
-        // // Mock useDispatch hook
-        spyOnUseDispatch = jest.spyOn(redux, 'useDispatch');
-        // Mock dispatch function returned from useDispatch
-        mockDispatch = jest.fn();
-        spyOnUseDispatch.mockReturnValue(mockDispatch);
-
-
         store = mockStore({
             post: {
                 list: [
@@ -86,16 +69,77 @@ describe('enzyme saga test', () => {
     });
 
     it('should spy on useSelector and useDispatch', () => {
-
+        // Mock useSelector hook
+        spyOnUseSelector = jest.spyOn(redux, 'useSelector');
+        spyOnUseSelector.mockReturnValue({
+            post: {
+                list: [
+                    {"userId": 11, "id": 11, "title": 'hello', "body": 'world'}
+                ]
+            }
+        });
+        //
+        // // Mock useDispatch hook
+        spyOnUseDispatch = jest.spyOn(redux, 'useDispatch');
+        // Mock dispatch function returned from useDispatch
+        mockDispatch = jest.fn();
+        spyOnUseDispatch.mockReturnValue(mockDispatch);
         const { wrapper } = setup2(Posts)
 
         expect(spyOnUseSelector).toBeCalledTimes(1);
         expect(spyOnUseDispatch).toBeCalledTimes(1);
         actions.readPostRequest(mockDispatch)
         expect(mockDispatch.mock.calls.length).toBe(1)
-        expect(mockDispatch.mock.calls[0]).toBe({
+        expect(mockDispatch.mock.calls[0][0]).toEqual({
             type: READ_POST_REQUEST,
-            payload: undefined
+            value: undefined
         })
+        console.log('...................mockDispatch.mock.calls:', mockDispatch.mock.calls)
+        console.log('...................store.getActions():', store.getActions())
+    })
+
+    it("should return", async () => {
+        const spyOnGetList = jest.spyOn(api, "getList");
+        spyOnGetList.mockReturnValue({
+            data: [
+                {
+                    userId: 1,
+                    id: 1,
+                    title: 'My First Album'
+                },
+                {
+                    userId: 1,
+                    id: 2,
+                    title: 'Album: The Sequel'
+                }
+            ]
+        })
+        // axios.get.mockResolvedValue({
+        //     data: [
+        //         {
+        //             userId: 1,
+        //             id: 1,
+        //             title: 'My First Album'
+        //         },
+        //         {
+        //             userId: 1,
+        //             id: 2,
+        //             title: 'Album: The Sequel'
+        //         }
+        //     ]
+        // });
+        const list = await api.getList();
+        console.log('list....:', list);
+        /*
+        const user = {
+      login: 'user 1',
+      password: 'password'
+    };
+    const dispatch = jest.fn();
+    await actions.signInUser(user)(dispatch);  // <= call the function on a user, then call the resulting function on a dispatch
+    expect(dispatch).toHaveBeenCalledTimes(2);  // Success!
+    expect(dispatch).toHaveBeenNthCalledWith(1, { type: START_SIGNIN_REQUEST });  // Success!
+    expect(dispatch).toHaveBeenNthCalledWith(2, { type: SIGNIN_USER_SUCCEEDED, user: 'the username' });  // Success!
+         */
     })
 })
