@@ -45,6 +45,18 @@ describe('enzyme saga test', () => {
     it('should match snapshot', () => {
         // const wrapper = render(<Provider store={store}><Posts/></Provider>)
         // expect(await screen.findByText('sunt aut facere repellat provident occaecati excepturi optio reprehenderit')).toBeInTheDocument()
+
+        // Mock useSelector hook
+        spyOnUseSelector = jest.spyOn(redux, 'useSelector');
+        // // Mock useDispatch hook
+        spyOnUseDispatch = jest.spyOn(redux, 'useDispatch');
+        // Mock dispatch function returned from useDispatch
+        mockDispatch = jest.fn();
+
+        spyOnUseSelector.mockImplementation((selectorFn) => selectorFn({
+            post:{ list: [{userId: 2, id: 2, title: '2', body: '22'}]}
+        }));
+        spyOnUseDispatch.mockReturnValue(mockDispatch);
         const { wrapper } = setup2(Posts)
         expect(toJson(wrapper)).toMatchSnapshot()
    })
@@ -141,5 +153,26 @@ describe('enzyme saga test', () => {
     expect(dispatch).toHaveBeenNthCalledWith(1, { type: START_SIGNIN_REQUEST });  // Success!
     expect(dispatch).toHaveBeenNthCalledWith(2, { type: SIGNIN_USER_SUCCEEDED, user: 'the username' });  // Success!
          */
+    })
+
+    it("should spy", async () => {
+        // Mock useSelector hook
+        spyOnUseSelector = jest.spyOn(redux, 'useSelector');
+        // // Mock useDispatch hook
+        spyOnUseDispatch = jest.spyOn(redux, 'useDispatch');
+        // Mock dispatch function returned from useDispatch
+        mockDispatch = jest.fn();
+
+        spyOnUseSelector.mockImplementation((selectorFn) => selectorFn({
+            post:{ list: [{userId: 2, id: 2, title: '2', body: '22'}]}
+        }));
+        spyOnUseDispatch.mockReturnValue(mockDispatch);
+        const { wrapper } = setup2(Posts)
+        expect(mockDispatch).toHaveBeenCalledWith({
+            'payload': undefined,
+            'type': 'post/READ_POST_REQUEST',
+        });
+
+        console.log('wrapper::::', toJson(wrapper));
     })
 })

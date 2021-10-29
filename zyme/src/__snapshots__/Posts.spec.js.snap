@@ -19,16 +19,16 @@ exports[`enzyme saga test should match snapshot 1`] = `
         key="0"
       >
         <div>
-          11
+          2
         </div>
         <div>
-          11
+          2
         </div>
         <div>
-          hello
+          2
         </div>
         <div>
-          world
+          22
         </div>
       </div>
     </div>
