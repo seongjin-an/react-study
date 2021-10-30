@@ -54,7 +54,7 @@ describe('enzyme saga test', () => {
         mockDispatch = jest.fn();
 
         spyOnUseSelector.mockImplementation((selectorFn) => selectorFn({
-            post:{ list: [{userId: 2, id: 2, title: '2', body: '22'}]}
+            post:{ list: [{userId: 3, id: 2, title: '2', body: '22'}]}
         }));
         spyOnUseDispatch.mockReturnValue(mockDispatch);
         const { wrapper } = setup2(Posts)
