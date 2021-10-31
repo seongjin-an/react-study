@@ -9,7 +9,7 @@ const Posts = () => {
         dispatch(readPostRequest())
     },[])
     return(
-        <div>
+        <div className="postArea">
             {list && list.length>0 &&
             list.map((item, index) => <div key={index}>
                 <div>{item.userId}</div>

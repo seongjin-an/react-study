@@ -1,5 +1,5 @@
 import React from "react";
-import {configure, mount} from "enzyme";
+import {configure, mount, shallow} from "enzyme";
 import {Provider} from "react-redux";
 import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
 import Posts from "./Posts";
@@ -175,4 +175,30 @@ describe('enzyme saga test', () => {
 
         console.log('wrapper::::', toJson(wrapper));
     })
+    it('should render', () => {
+
+
+        const wrapper = mount(<Provider store={store}><Posts/></Provider>)
+        // Mock useSelector hook
+        spyOnUseSelector = jest.spyOn(redux, 'useSelector');
+        // // Mock useDispatch hook
+        spyOnUseDispatch = jest.spyOn(redux, 'useDispatch');
+        // Mock dispatch function returned from useDispatch
+        mockDispatch = jest.fn();
+
+        spyOnUseSelector.mockReturnValue({
+            post: {
+                list: [
+                    {"userId": 11, "id": 11, "title": 'hello', "body": 'world'}
+                ]
+            }
+        });
+        spyOnUseDispatch.mockReturnValue(mockDispatch);
+        const posts = wrapper.find('.postArea').props()
+        console.log('wrapper!!!', posts)
+    })
+    // it('tests', () => {
+    //     const wrapper = mount(<div><span className="imsi">hihi</span></div>)
+    //     console.log('imsi: ', wrapper.props())
+    // })
 })

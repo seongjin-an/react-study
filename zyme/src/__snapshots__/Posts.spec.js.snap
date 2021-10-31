@@ -14,7 +14,9 @@ exports[`enzyme saga test should match snapshot 1`] = `
   }
 >
   <Posts>
-    <div>
+    <div
+      className="postArea"
+    >
       <div
         key="0"
       >
