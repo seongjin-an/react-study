@@ -33,7 +33,8 @@ describe('enzyme saga test', () => {
         store = mockStore({
             post: {
                 list: [
-                    {"userId": 11, "id": 11, "title": 'hello', "body": 'world'}
+                    {"userId": 11, "id": 11, "title": 'hello', "body": 'world'},
+                    {"userId": 22, "id": 22, "title": "halo", "body": "world"}
                 ]
             }
         })
@@ -177,8 +178,8 @@ describe('enzyme saga test', () => {
     })
     it('should render', () => {
 
-
-        const wrapper = mount(<Provider store={store}><Posts/></Provider>)
+        // const wrapper = mount(<Provider store={store}><Posts/></Provider>)
+        const { wrapper } = setup2(Posts)
         // Mock useSelector hook
         spyOnUseSelector = jest.spyOn(redux, 'useSelector');
         // // Mock useDispatch hook
@@ -189,13 +190,18 @@ describe('enzyme saga test', () => {
         spyOnUseSelector.mockReturnValue({
             post: {
                 list: [
-                    {"userId": 11, "id": 11, "title": 'hello', "body": 'world'}
+                    {"userId": 11, "id": 11, "title": 'hello', "body": 'world'},
+                    {"userId": 22, "id": 22, "title": 'halo', "body": 'world'},
+                    {"userId": 33, "id": 33, "title": 'halo', "body": 'world'},
                 ]
             }
         });
         spyOnUseDispatch.mockReturnValue(mockDispatch);
-        const posts = wrapper.find('.postArea').props()
-        console.log('wrapper!!!', posts)
+
+        const posts = wrapper.find('.postArea')
+        console.log('posts.props()', posts.props())
+        console.log('posts.props().children[0].props.children', posts.props().children[0].props.children)
+        console.log('posts.props().children.length:', posts.props().children.length)
     })
     // it('tests', () => {
     //     const wrapper = mount(<div><span className="imsi">hihi</span></div>)
