@@ -4,8 +4,9 @@ exports[`post list component should match snapshot 1`] = `
 <Provider
   store={
     Object {
-      "@@observable": [Function],
+      "clearActions": [Function],
       "dispatch": [Function],
+      "getActions": [Function],
       "getState": [Function],
       "replaceReducer": [Function],
       "subscribe": [Function],
@@ -35,7 +36,20 @@ exports[`post list component should match snapshot 1`] = `
         }
       }
     >
-      <PostListPage>
+      <PostListPage
+        location={
+          Object {
+            "search": "",
+          }
+        }
+        match={
+          Object {
+            "params": Object {
+              "username": "",
+            },
+          }
+        }
+      >
         <PostListTemplate>
           <Header>
             <styled.div>
@@ -77,31 +91,26 @@ exports[`post list component should match snapshot 1`] = `
                         <div
                           className="right"
                         >
-                          <CommonButton
-                            to="/login"
-                          >
-                            <Styled(Link)
-                              to="/login"
+                          <styled.div>
+                            <div
+                              className="sc-iBPTik grkuEo"
                             >
-                              <Link
-                                className="sc-dlfnuX gwwbGh"
-                                to="/login"
+                              ansj
+                            </div>
+                          </styled.div>
+                          <CommonButton
+                            onClick={[Function]}
+                          >
+                            <styled.button
+                              onClick={[Function]}
+                            >
+                              <button
+                                className="sc-gsTEea eDrJBV"
+                                onClick={[Function]}
                               >
-                                <LinkAnchor
-                                  className="sc-dlfnuX gwwbGh"
-                                  href="/login"
-                                  navigate={[Function]}
-                                >
-                                  <a
-                                    className="sc-dlfnuX gwwbGh"
-                                    href="/login"
-                                    onClick={[Function]}
-                                  >
-                                    로그인
-                                  </a>
-                                </LinkAnchor>
-                              </Link>
-                            </Styled(Link)>
+                                로그아웃
+                              </button>
+                            </styled.button>
                           </CommonButton>
                         </div>
                       </div>
@@ -163,8 +172,288 @@ exports[`post list component should match snapshot 1`] = `
                       <styled.div>
                         <div
                           className="sc-bqyKOL fNwuQZ"
-                        />
+                        >
+                          <CommonButton
+                            cyan={true}
+                            to="/write"
+                          >
+                            <Styled(Link)
+                              to="/write"
+                            >
+                              <Link
+                                className="sc-dlfnuX gwwbGh"
+                                to="/write"
+                              >
+                                <LinkAnchor
+                                  className="sc-dlfnuX gwwbGh"
+                                  href="/write"
+                                  navigate={[Function]}
+                                >
+                                  <a
+                                    className="sc-dlfnuX gwwbGh"
+                                    href="/write"
+                                    onClick={[Function]}
+                                  >
+                                    새 글 작성하기
+                                  </a>
+                                </LinkAnchor>
+                              </Link>
+                            </Styled(Link)>
+                          </CommonButton>
+                        </div>
                       </styled.div>
+                      <div
+                        className="real-post-list"
+                      >
+                        <PostItem
+                          key="0"
+                          post={
+                            Object {
+                              "__v": 111,
+                              "_id": "ansjId",
+                              "body": "body test",
+                              "publishedDate": "20211111",
+                              "tags": Array [
+                                "tag1 test",
+                                "tag2 test",
+                              ],
+                              "title": "title test",
+                              "user": Object {
+                                "_id": "ansjId",
+                                "username": "ansjUsername",
+                              },
+                            }
+                          }
+                        >
+                          <styled.div>
+                            <div
+                              className="sc-crrszt jeeZHg"
+                            >
+                              <h2>
+                                <Link
+                                  to="/@ansjUsername/ansjId"
+                                >
+                                  <LinkAnchor
+                                    href="/@ansjUsername/ansjId"
+                                    navigate={[Function]}
+                                  >
+                                    <a
+                                      href="/@ansjUsername/ansjId"
+                                      onClick={[Function]}
+                                    >
+                                      title test
+                                    </a>
+                                  </LinkAnchor>
+                                </Link>
+                              </h2>
+                              <PostSubInfo
+                                hasMarginTop={false}
+                                publishedDate="20211111"
+                                user="ansjUsername"
+                              >
+                                <styled.div
+                                  hasMarginTop={false}
+                                >
+                                  <div
+                                    className="sc-kEjbQP gGzRtD"
+                                  >
+                                    <span>
+                                      <b>
+                                        ansjUsername
+                                      </b>
+                                    </span>
+                                    <span>
+                                      Invalid Date
+                                    </span>
+                                  </div>
+                                </styled.div>
+                              </PostSubInfo>
+                              <Tags
+                                tags={
+                                  Array [
+                                    "tag1 test",
+                                    "tag2 test",
+                                  ]
+                                }
+                              >
+                                <styled.div>
+                                  <div
+                                    className="sc-iqHYmW iGeSrr"
+                                  >
+                                    <Link
+                                      className="tag"
+                                      key="tag1 test"
+                                      to="/?tag=tag1 test"
+                                    >
+                                      <LinkAnchor
+                                        className="tag"
+                                        href="/?tag=tag1 test"
+                                        navigate={[Function]}
+                                      >
+                                        <a
+                                          className="tag"
+                                          href="/?tag=tag1 test"
+                                          onClick={[Function]}
+                                        >
+                                          #
+                                          tag1 test
+                                        </a>
+                                      </LinkAnchor>
+                                    </Link>
+                                    <Link
+                                      className="tag"
+                                      key="tag2 test"
+                                      to="/?tag=tag2 test"
+                                    >
+                                      <LinkAnchor
+                                        className="tag"
+                                        href="/?tag=tag2 test"
+                                        navigate={[Function]}
+                                      >
+                                        <a
+                                          className="tag"
+                                          href="/?tag=tag2 test"
+                                          onClick={[Function]}
+                                        >
+                                          #
+                                          tag2 test
+                                        </a>
+                                      </LinkAnchor>
+                                    </Link>
+                                  </div>
+                                </styled.div>
+                              </Tags>
+                              <p>
+                                body test
+                              </p>
+                            </div>
+                          </styled.div>
+                        </PostItem>
+                        <PostItem
+                          key="1"
+                          post={
+                            Object {
+                              "__v": 1112,
+                              "_id": "ansjId2",
+                              "body": "body test2",
+                              "publishedDate": "20211112",
+                              "tags": Array [
+                                "tag1 test2",
+                                "tag2 test2",
+                              ],
+                              "title": "title test2",
+                              "user": Object {
+                                "_id": "ansjId2",
+                                "username": "ansjUsername2",
+                              },
+                            }
+                          }
+                        >
+                          <styled.div>
+                            <div
+                              className="sc-crrszt jeeZHg"
+                            >
+                              <h2>
+                                <Link
+                                  to="/@ansjUsername2/ansjId2"
+                                >
+                                  <LinkAnchor
+                                    href="/@ansjUsername2/ansjId2"
+                                    navigate={[Function]}
+                                  >
+                                    <a
+                                      href="/@ansjUsername2/ansjId2"
+                                      onClick={[Function]}
+                                    >
+                                      title test2
+                                    </a>
+                                  </LinkAnchor>
+                                </Link>
+                              </h2>
+                              <PostSubInfo
+                                hasMarginTop={false}
+                                publishedDate="20211112"
+                                user="ansjUsername2"
+                              >
+                                <styled.div
+                                  hasMarginTop={false}
+                                >
+                                  <div
+                                    className="sc-kEjbQP gGzRtD"
+                                  >
+                                    <span>
+                                      <b>
+                                        ansjUsername2
+                                      </b>
+                                    </span>
+                                    <span>
+                                      Invalid Date
+                                    </span>
+                                  </div>
+                                </styled.div>
+                              </PostSubInfo>
+                              <Tags
+                                tags={
+                                  Array [
+                                    "tag1 test2",
+                                    "tag2 test2",
+                                  ]
+                                }
+                              >
+                                <styled.div>
+                                  <div
+                                    className="sc-iqHYmW iGeSrr"
+                                  >
+                                    <Link
+                                      className="tag"
+                                      key="tag1 test2"
+                                      to="/?tag=tag1 test2"
+                                    >
+                                      <LinkAnchor
+                                        className="tag"
+                                        href="/?tag=tag1 test2"
+                                        navigate={[Function]}
+                                      >
+                                        <a
+                                          className="tag"
+                                          href="/?tag=tag1 test2"
+                                          onClick={[Function]}
+                                        >
+                                          #
+                                          tag1 test2
+                                        </a>
+                                      </LinkAnchor>
+                                    </Link>
+                                    <Link
+                                      className="tag"
+                                      key="tag2 test2"
+                                      to="/?tag=tag2 test2"
+                                    >
+                                      <LinkAnchor
+                                        className="tag"
+                                        href="/?tag=tag2 test2"
+                                        navigate={[Function]}
+                                      >
+                                        <a
+                                          className="tag"
+                                          href="/?tag=tag2 test2"
+                                          onClick={[Function]}
+                                        >
+                                          #
+                                          tag2 test2
+                                        </a>
+                                      </LinkAnchor>
+                                    </Link>
+                                  </div>
+                                </styled.div>
+                              </Tags>
+                              <p>
+                                body test2
+                              </p>
+                            </div>
+                          </styled.div>
+                        </PostItem>
+                      </div>
                     </div>
                   </styled.div>
                 </Responsive>
@@ -209,7 +498,62 @@ exports[`post list component should match snapshot 1`] = `
                   "url": "/",
                 }
               }
-            />
+            >
+              <styled.div>
+                <div
+                  className="sc-kstqJO WyJkg"
+                >
+                  <CommonButton
+                    disabled={true}
+                  >
+                    <styled.button
+                      disabled={true}
+                    >
+                      <button
+                        className="sc-gsTEea eDrJBV"
+                        disabled={true}
+                      >
+                        이전
+                      </button>
+                    </styled.button>
+                  </CommonButton>
+                  <styled.div>
+                    <div
+                      className="sc-hBEYId"
+                    >
+                      1
+                    </div>
+                  </styled.div>
+                  <CommonButton
+                    disabled={false}
+                    to="/?page=2"
+                  >
+                    <Styled(Link)
+                      to="/?page=2"
+                    >
+                      <Link
+                        className="sc-dlfnuX gwwbGh"
+                        to="/?page=2"
+                      >
+                        <LinkAnchor
+                          className="sc-dlfnuX gwwbGh"
+                          href="/?page=2"
+                          navigate={[Function]}
+                        >
+                          <a
+                            className="sc-dlfnuX gwwbGh"
+                            href="/?page=2"
+                            onClick={[Function]}
+                          >
+                            다음
+                          </a>
+                        </LinkAnchor>
+                      </Link>
+                    </Styled(Link)>
+                  </CommonButton>
+                </div>
+              </styled.div>
+            </Pagination>
           </withRouter(Pagination)>
         </PostListTemplate>
       </PostListPage>
