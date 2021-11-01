@@ -145,7 +145,7 @@ describe('enzyme saga test', () => {
         console.log('list....:', list);
         /*
         const user = {
-      login: 'user 1',
+      login: 'user 1',http://210.97.42.246:19000/
       password: 'password'
     };
     const dispatch = jest.fn();
@@ -202,9 +202,8 @@ describe('enzyme saga test', () => {
         console.log('posts.props()', posts.props())
         console.log('posts.props().children[0].props.children', posts.props().children[0].props.children)
         console.log('posts.props().children.length:', posts.props().children.length)
+        console.log('wrapper.text():', wrapper.text())
+        expect(wrapper.text()).toContain('hello')
     })
-    // it('tests', () => {
-    //     const wrapper = mount(<div><span className="imsi">hihi</span></div>)
-    //     console.log('imsi: ', wrapper.props())
-    // })
+
 })
