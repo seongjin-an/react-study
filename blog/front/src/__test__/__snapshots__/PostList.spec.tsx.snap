@@ -81,7 +81,7 @@ exports[`post list component should match snapshot 1`] = `
                               onClick={[Function]}
                             >
                               <span
-                                className="post-list-header"
+                                className="common-header"
                               >
                                 REACTERS
                               </span>
