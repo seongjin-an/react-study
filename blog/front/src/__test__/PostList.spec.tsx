@@ -119,15 +119,25 @@ describe('post list component', () => {
             n.name() === 'CommonButton'
         )
         expect(commonButtonBetter).toHaveLength(4)
-
+        expect(commonButtonBetter.at(0).text()).toBe('로그아웃')
+        expect(commonButtonBetter.at(1).text()).toBe('새 글 작성하기')
+    })
+    it('should action', () => {
+        const {wrapper} = setup(PostListPage, {
+            location:{
+                search: ''
+            },
+            match:{
+                params: {
+                    username: ''
+                }
+            }
+        })
         const logoutButton = wrapper.findWhere(n=>n.name()==='CommonButton'&&n.text()==='로그아웃')
         logoutButton.simulate('click')
-        wrapper.update()
         console.log('mockDispatch.mock:', mockDispatch.mock)
         console.log('mockDispatch.mock.calls:', mockDispatch.mock.calls);
         expect(mockDispatch.mock.calls[1][0]).toEqual({"payload": undefined, "type": "user/LOGOUT"})
-
-        const loginButton = wrapper.findWhere(n=>n.name()==='CommonButton'&&n.text()==='로그인');
 
     })
 })
