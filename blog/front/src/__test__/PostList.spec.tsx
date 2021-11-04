@@ -124,6 +124,11 @@ describe('post list component', () => {
 
         const postItems = wrapper.find('PostItem')
         expect(postItems).toHaveLength(2);
+        expect(postItems.at(0).find('h2').text()).toBe('title test');
+        expect(postItems.at(0).find('span').at(0).text()).toBe('ansjUsername')
+        expect(postItems.at(0).find('span').at(1).text()).toBe(new Date('20211111').toLocaleDateString())
+
+
     })
     it('should action', () => {
         const {wrapper} = setup(PostListPage, {
