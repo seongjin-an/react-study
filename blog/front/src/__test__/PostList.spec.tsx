@@ -121,6 +121,9 @@ describe('post list component', () => {
         expect(commonButtonBetter).toHaveLength(4)
         expect(commonButtonBetter.at(0).text()).toBe('로그아웃')
         expect(commonButtonBetter.at(1).text()).toBe('새 글 작성하기')
+
+        const postItems = wrapper.find('PostItem')
+        expect(postItems).toHaveLength(2);
     })
     it('should action', () => {
         const {wrapper} = setup(PostListPage, {
