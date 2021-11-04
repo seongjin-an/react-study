@@ -128,6 +128,9 @@ describe('post list component', () => {
         expect(postItems.at(0).find('span').at(0).text()).toBe('ansjUsername')
         expect(postItems.at(0).find('span').at(1).text()).toBe(new Date('20211111').toLocaleDateString())
 
+        expect(postItems.at(1).find('h2').text()).toBe('title test2');
+        expect(postItems.at(1).find('span').at(0).text()).toBe('ansjUsername2')
+        expect(postItems.at(1).find('span').at(1).text()).toBe(new Date('20211112').toLocaleDateString())
 
     })
     it('should action', () => {
