@@ -86,7 +86,24 @@ describe('register component', () => {
         expect(mockDispatch.mock.calls[2][0]).toEqual({ type: 'auth/CHANGE_FIELD', payload: { form: 1, key: 'password', value: '1234' }})
         authInput.at(2).simulate('change', { target: { name: 'passwordConfirm', value: '1234' } })
         expect(mockDispatch.mock.calls[3][0]).toEqual({ type: 'auth/CHANGE_FIELD', payload: { form: 1, key: 'passwordConfirm', value: '1234' }})
-        console.log('STORE:', store.getState())
+
+        store = mockStore({
+            auth: {
+                register: {
+                    username: '111',
+                    password: '222',
+                    passwordConfirm: '333'
+                }
+            },
+            authError: null,
+            user:{
+                _id: '',
+                username: ''
+            }
+        })
+        // const usernameInput = wrapper.find('input[name="username"]')
+        // expect(usernameInput.props().value).toBe('imsi11')
+
         // const usernameInput = wrapper.find('input[name="username"]')
         // console.log('usernameInput prop:', usernameInput.props())
     })
