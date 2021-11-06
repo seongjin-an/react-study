@@ -57,6 +57,7 @@ describe('register component', () => {
         const {wrapper} = setup(RegisterPage, {
             type: EFormType.register
         })
+
         expect(toJson(wrapper)).toMatchSnapshot()
     })
     it('should render properly', () => {
@@ -73,6 +74,20 @@ describe('register component', () => {
         expect(commonButton.text()).toBe('회원가입')
         const footerButton = wrapper.find('AuthFooter')
         expect(footerButton.text()).toBe('로그인')
-
+    })
+    it('should fill', () => {
+        const { wrapper } = setup(RegisterPage, {
+            type: EFormType.register
+        })
+        const authInput = wrapper.find('AuthInput')
+        authInput.at(0).simulate('change', { target: { name: 'username', value: 'imsi11' } })
+        expect(mockDispatch.mock.calls[1][0]).toEqual({ type: 'auth/CHANGE_FIELD', payload: { form: 1, key: 'username', value: 'imsi11'}})
+        authInput.at(1).simulate('change', { target: { name: 'password', value: '1234' } })
+        expect(mockDispatch.mock.calls[2][0]).toEqual({ type: 'auth/CHANGE_FIELD', payload: { form: 1, key: 'password', value: '1234' }})
+        authInput.at(2).simulate('change', { target: { name: 'passwordConfirm', value: '1234' } })
+        expect(mockDispatch.mock.calls[3][0]).toEqual({ type: 'auth/CHANGE_FIELD', payload: { form: 1, key: 'passwordConfirm', value: '1234' }})
+        console.log('STORE:', store.getState())
+        // const usernameInput = wrapper.find('input[name="username"]')
+        // console.log('usernameInput prop:', usernameInput.props())
     })
 })
