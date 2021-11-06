@@ -59,4 +59,11 @@ describe('register component', () => {
         })
         expect(toJson(wrapper)).toMatchSnapshot()
     })
+    it('should render properly', () => {
+        const { wrapper } = setup(RegisterPage, {
+            type: EFormType.register
+        })
+        const header = wrapper.find('.logo-area')
+        expect(header.text()).toBe('REACTERS')
+    })
 })
